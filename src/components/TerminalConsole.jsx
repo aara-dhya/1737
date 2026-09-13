@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Terminal, Play, CheckCircle2, RefreshCw, GitCommit, ShieldAlert } from 'lucide-react';
+import NcursesFrame from './NcursesFrame';
 
 export default function TerminalConsole({ onRunPipeline }) {
   const [running, setRunning] = useState(false);
@@ -19,7 +19,7 @@ export default function TerminalConsole({ onRunPipeline }) {
 
   const handleRun = () => {
     setRunning(true);
-    setLogs(prev => [...prev, "\n>>> Triggering full HFT ML Pipeline re-execution..."]);
+    setLogs(prev => [...prev, "\n>>> sysadmin@quant-tui:~# python3 run_pipeline.py"]);
 
     setTimeout(() => {
       setLogs(prev => [
@@ -28,7 +28,7 @@ export default function TerminalConsole({ onRunPipeline }) {
         "[+] Phase 1 Polars feature engineering complete.",
         "[+] Phase 2 Scikit-Learn Random Forest retrained.",
         "[+] Phase 3 Sniper Mode backtesting complete.",
-        "[+] GIT COMMITS VERIFIED.",
+        "[+] ALL CONVENTIONAL GIT COMMITS VERIFIED.",
         "[+] EXECUTION FINISHED SUCCESSFULLY."
       ]);
       setRunning(false);
@@ -37,62 +37,61 @@ export default function TerminalConsole({ onRunPipeline }) {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="card-brutal shadow-brutal flex justify-between items-center bg-black border-2 border-pastel p-4">
-        <div className="flex items-center space-x-3">
-          <Terminal className="w-5 h-5 text-pastel" />
+    <div className="space-y-4 font-mono text-xs">
+      {/* Top Banner Frame */}
+      <NcursesFrame title="LIVE PYTHON PIPELINE TERMINAL CONSOLE" headerExtra="SHELL: [ BASH ]">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
           <div>
-            <h2 className="font-bold text-white text-lg tracking-wider">LIVE PYTHON PIPELINE TERMINAL</h2>
-            <p className="text-xs text-muted-gray">Execute Polars & Scikit-Learn core pipeline scripts</p>
+            <div className="text-green-400 font-bold">
+              EXECUTE PYTHON CORE SCRIPTS (`phase1.py`, `phase2.py`, `phase3.py`)
+            </div>
+            <div className="text-green-600 text-[11px]">
+              TRIGGERS POLARS DATA PROCESSING, MODEL RE-TRAINING, AND GIT CONVENTIONAL COMMITS
+            </div>
+          </div>
+
+          <button 
+            onClick={handleRun} 
+            disabled={running}
+            className="ncurses-btn text-xs font-bold"
+          >
+            {running ? '[ EXECUTING... ]' : '[ RUN PIPELINE NOW ]'}
+          </button>
+        </div>
+      </NcursesFrame>
+
+      {/* Terminal Screen Box */}
+      <NcursesFrame title="TERMINAL STDOUT / STDERR LOG MONITOR">
+        <div className="border border-green-400 bg-black p-3 text-xs font-mono space-y-1 min-h-[280px] overflow-y-auto">
+          {logs.map((log, idx) => (
+            <div key={idx} className={log.includes("Commit:") ? "font-bold text-green-400" : log.includes(">>>") ? "text-yellow-400 font-bold" : "text-green-500"}>
+              {log}
+            </div>
+          ))}
+          <div className="text-green-400 font-bold pt-2 flex items-center">
+            <span>sysadmin@quant-tui:~# </span>
+            <span className="w-2.5 h-4 bg-green-400 ml-1 inline-block animate-cursor"></span>
           </div>
         </div>
+      </NcursesFrame>
 
-        <button 
-          onClick={handleRun} 
-          disabled={running}
-          className="btn-primary flex items-center space-x-2 shadow-brutal-sm"
-        >
-          {running ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
-          <span>{running ? 'EXECUTING PIPELINE...' : 'RUN PIPELINE NOW'}</span>
-        </button>
-      </div>
-
-      {/* Terminal Display */}
-      <div className="card-brutal border border-zinc-800 bg-zinc-950 p-4 font-mono text-xs text-pastel space-y-2 min-h-[350px]">
-        <div className="flex justify-between items-center border-b border-zinc-800 pb-2 mb-3 text-zinc-500">
-          <span>bash - c "python3 run_pipeline.py"</span>
-          <span className="text-pastel flex items-center"><span className="w-2 h-2 bg-pastel rounded-none mr-2 inline-block"></span> READY</span>
-        </div>
-
-        {logs.map((log, idx) => (
-          <div key={idx} className={log.includes("Commit:") ? "text-white font-bold" : log.includes(">>>") ? "text-yellow-400 font-bold" : ""}>
-            {log}
+      {/* Conventional Commit Log */}
+      <NcursesFrame title="CONVENTIONAL COMMIT HISTORY LOG">
+        <div className="space-y-1 font-mono text-xs">
+          <div className="border border-green-800 p-1.5 flex justify-between items-center">
+            <span className="font-bold text-green-400">feat(data): engineer tick-time features and export to parquet</span>
+            <span className="text-green-600">[ PHASE 1 ]</span>
           </div>
-        ))}
-      </div>
-
-      {/* Git Commit History Panel */}
-      <div className="card-brutal border border-zinc-800 p-4">
-        <div className="flex items-center space-x-2 mb-3">
-          <GitCommit className="w-4 h-4 text-pastel" />
-          <h3 className="font-bold text-white text-sm uppercase">CONVENTIONAL COMMIT HISTORY LOG</h3>
-        </div>
-
-        <div className="space-y-2 text-xs font-mono">
-          <div className="bg-black border border-zinc-800 p-2 flex justify-between items-center">
-            <span className="text-pastel font-bold">feat(data): engineer tick-time features and export to parquet</span>
-            <span className="text-zinc-500">Phase 1</span>
+          <div className="border border-green-800 p-1.5 flex justify-between items-center">
+            <span className="font-bold text-green-400">feat(model): calculate time-series deltas and train v2 random forest</span>
+            <span className="text-green-600">[ PHASE 2 ]</span>
           </div>
-          <div className="bg-black border border-zinc-800 p-2 flex justify-between items-center">
-            <span className="text-pastel font-bold">feat(model): calculate time-series deltas and train v2 random forest</span>
-            <span className="text-zinc-500">Phase 2</span>
-          </div>
-          <div className="bg-black border border-zinc-800 p-2 flex justify-between items-center">
-            <span className="text-pastel font-bold">feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
-            <span className="text-zinc-500">Phase 3</span>
+          <div className="border border-green-800 p-1.5 flex justify-between items-center">
+            <span className="font-bold text-green-400">feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
+            <span className="text-green-600">[ PHASE 3 ]</span>
           </div>
         </div>
-      </div>
+      </NcursesFrame>
     </div>
   );
 }

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Terminal, Database, Cpu, TrendingUp, Play, ShieldAlert, ExternalLink, RefreshCw } from 'lucide-react';
+import React, { useState } from 'react';
 
 import Phase1Viewer from './components/Phase1Viewer';
 import Phase2Viewer from './components/Phase2Viewer';
 import Phase3Backtester from './components/Phase3Backtester';
 import TerminalConsole from './components/TerminalConsole';
 
-// Pre-packaged results fallback if JSON load delay occurs
 import initialData from '../data/pipeline_results.json';
 
 export default function App() {
@@ -14,96 +12,62 @@ export default function App() {
   const [pipelineData, setPipelineData] = useState(initialData);
 
   return (
-    <div className="min-h-screen bg-black text-white font-mono flex flex-col selection:bg-pastel selection:text-black">
-      {/* Top Cyberpunk Status Header */}
-      <header className="border-b-2 border-pastel bg-black sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-4 h-4 bg-pastel shadow-brutal-sm"></div>
-            <div>
-              <h1 className="text-lg font-bold text-white tracking-widest uppercase flex items-center">
-                QUANT TERMINAL <span className="text-pastel ml-2">// HFT ML PIPELINE</span>
-              </h1>
-              <p className="text-[11px] text-muted-gray">TERMINAL BRUTALISM / CYBERPUNK MINIMALIST SYSTEM</p>
-            </div>
-          </div>
+    <div className="h-screen w-screen bg-black text-green-400 font-mono flex flex-col overflow-hidden p-2 select-none border-2 border-green-400">
+      {/* Top ncurses Title & System Telemetry Header */}
+      <header className="bg-green-400 text-black px-3 py-1 font-bold flex flex-col md:flex-row justify-between items-start md:items-center text-xs uppercase shrink-0">
+        <div className="flex items-center space-x-2 font-extrabold text-sm">
+          <span>┌─[ ncurses v5.9 ]</span>
+          <span>QUANT TERMINAL :: HFT ML PIPELINE</span>
+        </div>
 
-          {/* System Telemetry Pills */}
-          <div className="flex items-center space-x-4 text-xs font-mono">
-            <div className="bg-zinc-950 border border-zinc-800 px-3 py-1 flex items-center space-x-2">
-              <span className="w-2 h-2 bg-pastel rounded-none inline-block animate-pulse"></span>
-              <span className="text-zinc-400">POLARS ENGINE:</span>
-              <span className="text-pastel font-bold">ACTIVE</span>
-            </div>
-            <div className="bg-zinc-950 border border-zinc-800 px-3 py-1 flex items-center space-x-2">
-              <span className="text-zinc-400">FEES:</span>
-              <span className="text-red-400 font-bold">$0.004 / TRADE</span>
-            </div>
-            <div className="bg-zinc-950 border border-zinc-800 px-3 py-1 flex items-center space-x-2">
-              <span className="text-zinc-400">MODEL PnL:</span>
-              <span className="text-pastel font-bold">
-                +${pipelineData?.backtest_metrics?.sniper?.net_profit ? pipelineData.backtest_metrics.sniper.net_profit.toFixed(2) : '3,237.34'}
-              </span>
-            </div>
-          </div>
+        <div className="flex items-center space-x-3 text-[11px] font-bold">
+          <span>ENGINE: [ POLARS ]</span>
+          <span>TAKER FRICTION: [ $0.004 ]</span>
+          <span>NET PnL: [ +${pipelineData?.backtest_metrics?.sniper?.net_profit ? pipelineData.backtest_metrics.sniper.net_profit.toFixed(2) : '3,237.34'} ]</span>
         </div>
       </header>
 
-      {/* Main Tab Navigation */}
-      <nav className="border-b border-zinc-800 bg-zinc-950">
-        <div className="max-w-7xl mx-auto px-4 flex overflow-x-auto">
-          <button
-            onClick={() => setActiveTab('phase1')}
-            className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-zinc-800 transition-colors ${
-              activeTab === 'phase1' 
-                ? 'bg-pastel text-black border-b-2 border-pastel' 
-                : 'text-muted-gray hover:text-white hover:bg-zinc-900'
-            }`}
-          >
-            <Database className="w-4 h-4" />
-            <span>PHASE 1: FEATURE ENG</span>
-          </button>
+      {/* Function Keys Navigation Bar ([F1: DATA], [F2: MODEL], [F3: BACKTEST], [F4: LOGS]) */}
+      <nav className="bg-black border-b border-green-400 py-1.5 px-2 flex space-x-2 shrink-0 overflow-x-auto">
+        <button
+          onClick={() => setActiveTab('phase1')}
+          className={`ncurses-btn text-xs font-bold ${
+            activeTab === 'phase1' ? 'bg-green-400 text-black' : 'text-green-400'
+          }`}
+        >
+          [ F1: DATA / FEATURE ENG ]
+        </button>
 
-          <button
-            onClick={() => setActiveTab('phase2')}
-            className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-zinc-800 transition-colors ${
-              activeTab === 'phase2' 
-                ? 'bg-pastel text-black border-b-2 border-pastel' 
-                : 'text-muted-gray hover:text-white hover:bg-zinc-900'
-            }`}
-          >
-            <Cpu className="w-4 h-4" />
-            <span>PHASE 2: MODEL TRAIN</span>
-          </button>
+        <button
+          onClick={() => setActiveTab('phase2')}
+          className={`ncurses-btn text-xs font-bold ${
+            activeTab === 'phase2' ? 'bg-green-400 text-black' : 'text-green-400'
+          }`}
+        >
+          [ F2: MODEL TRAIN / DELTAS ]
+        </button>
 
-          <button
-            onClick={() => setActiveTab('phase3')}
-            className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-zinc-800 transition-colors ${
-              activeTab === 'phase3' 
-                ? 'bg-pastel text-black border-b-2 border-pastel' 
-                : 'text-muted-gray hover:text-white hover:bg-zinc-900'
-            }`}
-          >
-            <TrendingUp className="w-4 h-4" />
-            <span>PHASE 3: BACKTEST & SNIPER</span>
-          </button>
+        <button
+          onClick={() => setActiveTab('phase3')}
+          className={`ncurses-btn text-xs font-bold ${
+            activeTab === 'phase3' ? 'bg-green-400 text-black' : 'text-green-400'
+          }`}
+        >
+          [ F3: BACKTEST & SNIPER ]
+        </button>
 
-          <button
-            onClick={() => setActiveTab('terminal')}
-            className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center space-x-2 border-r border-zinc-800 transition-colors ${
-              activeTab === 'terminal' 
-                ? 'bg-pastel text-black border-b-2 border-pastel' 
-                : 'text-muted-gray hover:text-white hover:bg-zinc-900'
-            }`}
-          >
-            <Terminal className="w-4 h-4" />
-            <span>LIVE TERMINAL</span>
-          </button>
-        </div>
+        <button
+          onClick={() => setActiveTab('terminal')}
+          className={`ncurses-btn text-xs font-bold ${
+            activeTab === 'terminal' ? 'bg-green-400 text-black' : 'text-green-400'
+          }`}
+        >
+          [ F4: LIVE TERMINAL ]
+        </button>
       </nav>
 
-      {/* Main Workspace Area */}
-      <main className="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
+      {/* Main Viewport Content Area */}
+      <main className="flex-1 overflow-auto p-2 bg-black">
         {activeTab === 'phase1' && (
           <Phase1Viewer datasetSummary={pipelineData?.dataset_summary} />
         )}
@@ -129,17 +93,13 @@ export default function App() {
         )}
       </main>
 
-      {/* Footer per Brand Specs */}
-      <footer className="border-t border-zinc-900 bg-black py-4 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-xs text-muted-gray gap-2">
-          <div>
-            INSTITUTIONAL HFT MACHINE LEARNING PLATFORM &bull; PARQUET & SCIPY PIPELINE
-          </div>
-          <div className="flex items-center space-x-4 font-mono text-[11px]">
-            <span>STRICT 0PX BORDER-RADIUS</span>
-            <span>CYBERPUNK MINIMALIST AESTHETIC</span>
-            <span className="text-pastel font-bold">#77DD77</span>
-          </div>
+      {/* Bottom ncurses Status Bar */}
+      <footer className="bg-green-400 text-black px-2 py-0.5 font-bold flex justify-between items-center text-[11px] uppercase shrink-0">
+        <div>
+          &lt;F1&gt; DATA &bull; &lt;F2&gt; MODEL &bull; &lt;F3&gt; BACKTEST &bull; &lt;F4&gt; SHELL &bull; &lt;F10&gt; QUIT
+        </div>
+        <div className="font-mono text-[10px]">
+          [ TWO-TONE VGA 80x24 TUI DISPLAY ]
         </div>
       </footer>
     </div>
