@@ -1,0 +1,2332 @@
+{
+  "dataset_summary": {
+    "symbol": "AAPL",
+    "total_raw_ticks": 10000,
+    "phase1_parquet_rows": 9980,
+    "phase2_train_rows": 7976,
+    "phase2_test_rows": 1994,
+    "feature_cols": [
+      "Spread_Dollars",
+      "Micro_Price_Dollars",
+      "Imbalance_Ratio",
+      "Deep_Imbalance_Ratio",
+      "Micro_Price_Delta_10",
+      "Deep_Imbalance_Delta_10"
+    ]
+  },
+  "feature_importances": [
+    {
+      "feature": "Deep_Imbalance_Ratio",
+      "importance": 0.4617146609407061
+    },
+    {
+      "feature": "Imbalance_Ratio",
+      "importance": 0.4276804621868052
+    },
+    {
+      "feature": "Micro_Price_Delta_10",
+      "importance": 0.08740200904321256
+    },
+    {
+      "feature": "Deep_Imbalance_Delta_10",
+      "importance": 0.017013846282361956
+    },
+    {
+      "feature": "Micro_Price_Dollars",
+      "importance": 0.005519091843064245
+    },
+    {
+      "feature": "Spread_Dollars",
+      "importance": 0.0006699297038499655
+    }
+  ],
+  "classification_report": "              precision    recall  f1-score   support\n\n   Down (-1)       1.00      0.99      1.00      1088\n    Flat (0)       0.00      0.00      0.00         0\n      Up (1)       0.99      1.00      1.00       906\n\n    accuracy                           1.00      1994\n   macro avg       0.66      0.66      0.66      1994\nweighted avg       1.00      1.00      1.00      1994\n",
+  "backtest_metrics": {
+    "threshold": 0.5,
+    "friction_per_trade": 0.004,
+    "baseline": {
+      "total_trades": 1994,
+      "gross_profit": 3245.3199000000004,
+      "total_fees": 7.976,
+      "net_profit": 3237.3439000000003
+    },
+    "sniper": {
+      "total_trades": 1994,
+      "gross_profit": 3245.3199000000004,
+      "total_fees": 7.976,
+      "net_profit": 3237.3439000000003
+    }
+  },
+  "pnl_series": [
+    {
+      "idx": 0,
+      "time": 34613.933,
+      "mid_price": 219.8406,
+      "cum_gross": 0.08049999999997226,
+      "cum_net_base": 0.07649999999997226,
+      "cum_gross_sniper": 0.08049999999997226,
+      "cum_net_sniper": 0.07649999999997226
+    },
+    {
+      "idx": 9,
+      "time": 34614.2252,
+      "mid_price": 219.94830000000002,
+      "cum_gross": 2.273199999999889,
+      "cum_net_base": 2.233199999999889,
+      "cum_gross_sniper": 2.273199999999889,
+      "cum_net_sniper": 2.233199999999889
+    },
+    {
+      "idx": 18,
+      "time": 34614.7828,
+      "mid_price": 219.8354,
+      "cum_gross": 13.26659999999984,
+      "cum_net_base": 13.190599999999844,
+      "cum_gross_sniper": 13.26659999999984,
+      "cum_net_sniper": 13.190599999999844
+    },
+    {
+      "idx": 27,
+      "time": 34615.0101,
+      "mid_price": 219.45480000000003,
+      "cum_gross": 41.60799999999986,
+      "cum_net_base": 41.49599999999987,
+      "cum_gross_sniper": 41.60799999999986,
+      "cum_net_sniper": 41.49599999999987
+    },
+    {
+      "idx": 36,
+      "time": 34615.3468,
+      "mid_price": 218.20190000000002,
+      "cum_gross": 68.04809999999995,
+      "cum_net_base": 67.90009999999997,
+      "cum_gross_sniper": 68.04809999999995,
+      "cum_net_sniper": 67.90009999999997
+    },
+    {
+      "idx": 45,
+      "time": 34616.1993,
+      "mid_price": 216.35110000000003,
+      "cum_gross": 82.61430000000001,
+      "cum_net_base": 82.43029999999999,
+      "cum_gross_sniper": 82.61430000000001,
+      "cum_net_sniper": 82.43029999999999
+    },
+    {
+      "idx": 54,
+      "time": 34616.8916,
+      "mid_price": 216.0011,
+      "cum_gross": 105.41670000000005,
+      "cum_net_base": 105.19669999999998,
+      "cum_gross_sniper": 105.41670000000005,
+      "cum_net_sniper": 105.19669999999998
+    },
+    {
+      "idx": 63,
+      "time": 34617.2406,
+      "mid_price": 214.9325,
+      "cum_gross": 129.5327000000001,
+      "cum_net_base": 129.27669999999998,
+      "cum_gross_sniper": 129.5327000000001,
+      "cum_net_sniper": 129.27669999999998
+    },
+    {
+      "idx": 72,
+      "time": 34617.8205,
+      "mid_price": 213.5745,
+      "cum_gross": 146.40490000000005,
+      "cum_net_base": 146.11290000000002,
+      "cum_gross_sniper": 146.40490000000005,
+      "cum_net_sniper": 146.11290000000002
+    },
+    {
+      "idx": 81,
+      "time": 34618.393,
+      "mid_price": 212.80700000000002,
+      "cum_gross": 159.4541,
+      "cum_net_base": 159.12610000000006,
+      "cum_gross_sniper": 159.4541,
+      "cum_net_sniper": 159.12610000000006
+    },
+    {
+      "idx": 90,
+      "time": 34618.8887,
+      "mid_price": 211.6959,
+      "cum_gross": 176.29239999999987,
+      "cum_net_base": 175.9284,
+      "cum_gross_sniper": 176.29239999999987,
+      "cum_net_sniper": 175.9284
+    },
+    {
+      "idx": 99,
+      "time": 34619.4259,
+      "mid_price": 211.34910000000002,
+      "cum_gross": 192.01689999999985,
+      "cum_net_base": 191.61690000000007,
+      "cum_gross_sniper": 192.01689999999985,
+      "cum_net_sniper": 191.61690000000007
+    },
+    {
+      "idx": 108,
+      "time": 34619.8398,
+      "mid_price": 210.11540000000002,
+      "cum_gross": 211.85599999999994,
+      "cum_net_base": 211.42000000000024,
+      "cum_gross_sniper": 211.85599999999994,
+      "cum_net_sniper": 211.42000000000024
+    },
+    {
+      "idx": 117,
+      "time": 34620.2459,
+      "mid_price": 209.4412,
+      "cum_gross": 242.4976999999999,
+      "cum_net_base": 242.02570000000028,
+      "cum_gross_sniper": 242.4976999999999,
+      "cum_net_sniper": 242.02570000000028
+    },
+    {
+      "idx": 126,
+      "time": 34621.015,
+      "mid_price": 207.85950000000003,
+      "cum_gross": 262.9830999999999,
+      "cum_net_base": 262.4751000000003,
+      "cum_gross_sniper": 262.9830999999999,
+      "cum_net_sniper": 262.4751000000003
+    },
+    {
+      "idx": 135,
+      "time": 34621.3976,
+      "mid_price": 206.68,
+      "cum_gross": 274.8323999999999,
+      "cum_net_base": 274.28840000000014,
+      "cum_gross_sniper": 274.8323999999999,
+      "cum_net_sniper": 274.28840000000014
+    },
+    {
+      "idx": 144,
+      "time": 34621.9091,
+      "mid_price": 206.1879,
+      "cum_gross": 289.3242999999998,
+      "cum_net_base": 288.74429999999995,
+      "cum_gross_sniper": 289.3242999999998,
+      "cum_net_sniper": 288.74429999999995
+    },
+    {
+      "idx": 153,
+      "time": 34622.3486,
+      "mid_price": 205.51010000000002,
+      "cum_gross": 304.9021999999999,
+      "cum_net_base": 304.2861999999999,
+      "cum_gross_sniper": 304.9021999999999,
+      "cum_net_sniper": 304.2861999999999
+    },
+    {
+      "idx": 162,
+      "time": 34622.6667,
+      "mid_price": 205.0003,
+      "cum_gross": 314.41079999999994,
+      "cum_net_base": 313.7587999999998,
+      "cum_gross_sniper": 314.41079999999994,
+      "cum_net_sniper": 313.7587999999998
+    },
+    {
+      "idx": 171,
+      "time": 34623.0717,
+      "mid_price": 203.9694,
+      "cum_gross": 319.8683,
+      "cum_net_base": 319.18029999999965,
+      "cum_gross_sniper": 319.8683,
+      "cum_net_sniper": 319.18029999999965
+    },
+    {
+      "idx": 180,
+      "time": 34624.0121,
+      "mid_price": 204.1331,
+      "cum_gross": 323.17339999999996,
+      "cum_net_base": 322.44939999999957,
+      "cum_gross_sniper": 323.17339999999996,
+      "cum_net_sniper": 322.44939999999957
+    },
+    {
+      "idx": 189,
+      "time": 34624.6201,
+      "mid_price": 203.7649,
+      "cum_gross": 328.04479999999995,
+      "cum_net_base": 327.2847999999994,
+      "cum_gross_sniper": 328.04479999999995,
+      "cum_net_sniper": 327.2847999999994
+    },
+    {
+      "idx": 198,
+      "time": 34625.1353,
+      "mid_price": 203.4368,
+      "cum_gross": 330.4699,
+      "cum_net_base": 329.67389999999926,
+      "cum_gross_sniper": 330.4699,
+      "cum_net_sniper": 329.67389999999926
+    },
+    {
+      "idx": 207,
+      "time": 34625.7469,
+      "mid_price": 203.2847,
+      "cum_gross": 336.67299999999994,
+      "cum_net_base": 335.8409999999991,
+      "cum_gross_sniper": 336.67299999999994,
+      "cum_net_sniper": 335.8409999999991
+    },
+    {
+      "idx": 216,
+      "time": 34626.3705,
+      "mid_price": 203.36560000000003,
+      "cum_gross": 352.06750000000005,
+      "cum_net_base": 351.1994999999991,
+      "cum_gross_sniper": 352.06750000000005,
+      "cum_net_sniper": 351.1994999999991
+    },
+    {
+      "idx": 225,
+      "time": 34626.7978,
+      "mid_price": 202.6457,
+      "cum_gross": 362.5852000000001,
+      "cum_net_base": 361.681199999999,
+      "cum_gross_sniper": 362.5852000000001,
+      "cum_net_sniper": 361.681199999999
+    },
+    {
+      "idx": 234,
+      "time": 34627.3371,
+      "mid_price": 201.3583,
+      "cum_gross": 370.7687000000001,
+      "cum_net_base": 369.8286999999989,
+      "cum_gross_sniper": 370.7687000000001,
+      "cum_net_sniper": 369.8286999999989
+    },
+    {
+      "idx": 243,
+      "time": 34627.7694,
+      "mid_price": 201.7908,
+      "cum_gross": 375.86960000000005,
+      "cum_net_base": 374.8935999999987,
+      "cum_gross_sniper": 375.86960000000005,
+      "cum_net_sniper": 374.8935999999987
+    },
+    {
+      "idx": 252,
+      "time": 34628.3368,
+      "mid_price": 201.3141,
+      "cum_gross": 379.6763000000001,
+      "cum_net_base": 378.66429999999855,
+      "cum_gross_sniper": 379.6763000000001,
+      "cum_net_sniper": 378.66429999999855
+    },
+    {
+      "idx": 261,
+      "time": 34628.8907,
+      "mid_price": 200.729,
+      "cum_gross": 382.5431000000002,
+      "cum_net_base": 381.49509999999856,
+      "cum_gross_sniper": 382.5431000000002,
+      "cum_net_sniper": 381.49509999999856
+    },
+    {
+      "idx": 270,
+      "time": 34629.438,
+      "mid_price": 200.8671,
+      "cum_gross": 389.5521000000002,
+      "cum_net_base": 388.4680999999984,
+      "cum_gross_sniper": 389.5521000000002,
+      "cum_net_sniper": 388.4680999999984
+    },
+    {
+      "idx": 279,
+      "time": 34629.8102,
+      "mid_price": 200.462,
+      "cum_gross": 393.7149000000002,
+      "cum_net_base": 392.5948999999983,
+      "cum_gross_sniper": 393.7149000000002,
+      "cum_net_sniper": 392.5948999999983
+    },
+    {
+      "idx": 288,
+      "time": 34630.1507,
+      "mid_price": 199.858,
+      "cum_gross": 397.74760000000026,
+      "cum_net_base": 396.59159999999815,
+      "cum_gross_sniper": 397.74760000000026,
+      "cum_net_sniper": 396.59159999999815
+    },
+    {
+      "idx": 297,
+      "time": 34630.9917,
+      "mid_price": 200.1637,
+      "cum_gross": 403.92910000000035,
+      "cum_net_base": 402.73709999999807,
+      "cum_gross_sniper": 403.92910000000035,
+      "cum_net_sniper": 402.73709999999807
+    },
+    {
+      "idx": 306,
+      "time": 34631.6827,
+      "mid_price": 199.9622,
+      "cum_gross": 416.91240000000045,
+      "cum_net_base": 415.684399999998,
+      "cum_gross_sniper": 416.91240000000045,
+      "cum_net_sniper": 415.684399999998
+    },
+    {
+      "idx": 315,
+      "time": 34632.2123,
+      "mid_price": 201.20510000000002,
+      "cum_gross": 423.3536000000004,
+      "cum_net_base": 422.08959999999786,
+      "cum_gross_sniper": 423.3536000000004,
+      "cum_net_sniper": 422.08959999999786
+    },
+    {
+      "idx": 324,
+      "time": 34632.7637,
+      "mid_price": 201.11180000000002,
+      "cum_gross": 427.88750000000033,
+      "cum_net_base": 426.58749999999765,
+      "cum_gross_sniper": 427.88750000000033,
+      "cum_net_sniper": 426.58749999999765
+    },
+    {
+      "idx": 333,
+      "time": 34633.33,
+      "mid_price": 201.57580000000002,
+      "cum_gross": 432.29580000000027,
+      "cum_net_base": 430.9597999999974,
+      "cum_gross_sniper": 432.29580000000027,
+      "cum_net_sniper": 430.9597999999974
+    },
+    {
+      "idx": 342,
+      "time": 34633.6887,
+      "mid_price": 201.8245,
+      "cum_gross": 436.76580000000035,
+      "cum_net_base": 435.3937999999973,
+      "cum_gross_sniper": 436.76580000000035,
+      "cum_net_sniper": 435.3937999999973
+    },
+    {
+      "idx": 351,
+      "time": 34634.014,
+      "mid_price": 201.9857,
+      "cum_gross": 439.6655000000004,
+      "cum_net_base": 438.2574999999972,
+      "cum_gross_sniper": 439.6655000000004,
+      "cum_net_sniper": 438.2574999999972
+    },
+    {
+      "idx": 360,
+      "time": 34634.3632,
+      "mid_price": 201.93130000000002,
+      "cum_gross": 444.13070000000045,
+      "cum_net_base": 442.6866999999971,
+      "cum_gross_sniper": 444.13070000000045,
+      "cum_net_sniper": 442.6866999999971
+    },
+    {
+      "idx": 369,
+      "time": 34634.7807,
+      "mid_price": 202.7596,
+      "cum_gross": 450.34150000000056,
+      "cum_net_base": 448.861499999997,
+      "cum_gross_sniper": 450.34150000000056,
+      "cum_net_sniper": 448.861499999997
+    },
+    {
+      "idx": 378,
+      "time": 34635.2353,
+      "mid_price": 202.55920000000003,
+      "cum_gross": 452.2781000000005,
+      "cum_net_base": 450.7620999999968,
+      "cum_gross_sniper": 452.2781000000005,
+      "cum_net_sniper": 450.7620999999968
+    },
+    {
+      "idx": 387,
+      "time": 34635.5086,
+      "mid_price": 202.66270000000003,
+      "cum_gross": 454.2244000000004,
+      "cum_net_base": 452.6723999999965,
+      "cum_gross_sniper": 454.2244000000004,
+      "cum_net_sniper": 452.6723999999965
+    },
+    {
+      "idx": 396,
+      "time": 34636.6572,
+      "mid_price": 202.66469999999998,
+      "cum_gross": 463.71370000000036,
+      "cum_net_base": 462.1256999999963,
+      "cum_gross_sniper": 463.71370000000036,
+      "cum_net_sniper": 462.1256999999963
+    },
+    {
+      "idx": 405,
+      "time": 34637.1478,
+      "mid_price": 202.9534,
+      "cum_gross": 474.5746000000003,
+      "cum_net_base": 472.9505999999961,
+      "cum_gross_sniper": 474.5746000000003,
+      "cum_net_sniper": 472.9505999999961
+    },
+    {
+      "idx": 414,
+      "time": 34637.4379,
+      "mid_price": 203.73110000000003,
+      "cum_gross": 481.87470000000036,
+      "cum_net_base": 480.21469999999596,
+      "cum_gross_sniper": 481.87470000000036,
+      "cum_net_sniper": 480.21469999999596
+    },
+    {
+      "idx": 423,
+      "time": 34637.604,
+      "mid_price": 204.0623,
+      "cum_gross": 484.88340000000034,
+      "cum_net_base": 483.18739999999576,
+      "cum_gross_sniper": 484.88340000000034,
+      "cum_net_sniper": 483.18739999999576
+    },
+    {
+      "idx": 432,
+      "time": 34638.273,
+      "mid_price": 204.2557,
+      "cum_gross": 486.1298000000003,
+      "cum_net_base": 484.3977999999955,
+      "cum_gross_sniper": 486.1298000000003,
+      "cum_net_sniper": 484.3977999999955
+    },
+    {
+      "idx": 441,
+      "time": 34638.7013,
+      "mid_price": 204.5609,
+      "cum_gross": 489.5087000000004,
+      "cum_net_base": 487.74069999999546,
+      "cum_gross_sniper": 489.5087000000004,
+      "cum_net_sniper": 487.74069999999546
+    },
+    {
+      "idx": 450,
+      "time": 34639.0083,
+      "mid_price": 204.4337,
+      "cum_gross": 496.8815000000005,
+      "cum_net_base": 495.07749999999544,
+      "cum_gross_sniper": 496.8815000000005,
+      "cum_net_sniper": 495.07749999999544
+    },
+    {
+      "idx": 459,
+      "time": 34639.341,
+      "mid_price": 204.69010000000003,
+      "cum_gross": 502.52720000000056,
+      "cum_net_base": 500.6871999999953,
+      "cum_gross_sniper": 502.52720000000056,
+      "cum_net_sniper": 500.6871999999953
+    },
+    {
+      "idx": 468,
+      "time": 34639.6087,
+      "mid_price": 204.87240000000003,
+      "cum_gross": 508.89060000000063,
+      "cum_net_base": 507.0145999999952,
+      "cum_gross_sniper": 508.89060000000063,
+      "cum_net_sniper": 507.0145999999952
+    },
+    {
+      "idx": 477,
+      "time": 34640.208,
+      "mid_price": 205.1622,
+      "cum_gross": 516.9405000000006,
+      "cum_net_base": 515.0284999999951,
+      "cum_gross_sniper": 516.9405000000006,
+      "cum_net_sniper": 515.0284999999951
+    },
+    {
+      "idx": 486,
+      "time": 34640.6817,
+      "mid_price": 205.92130000000003,
+      "cum_gross": 530.0607000000006,
+      "cum_net_base": 528.112699999995,
+      "cum_gross_sniper": 530.0607000000006,
+      "cum_net_sniper": 528.112699999995
+    },
+    {
+      "idx": 495,
+      "time": 34641.1478,
+      "mid_price": 206.17340000000002,
+      "cum_gross": 544.6150000000005,
+      "cum_net_base": 542.6309999999951,
+      "cum_gross_sniper": 544.6150000000005,
+      "cum_net_sniper": 542.6309999999951
+    },
+    {
+      "idx": 504,
+      "time": 34641.9046,
+      "mid_price": 207.36060000000003,
+      "cum_gross": 560.4704000000004,
+      "cum_net_base": 558.450399999995,
+      "cum_gross_sniper": 560.4704000000004,
+      "cum_net_sniper": 558.450399999995
+    },
+    {
+      "idx": 513,
+      "time": 34642.1091,
+      "mid_price": 207.7978,
+      "cum_gross": 578.2545000000002,
+      "cum_net_base": 576.198499999995,
+      "cum_gross_sniper": 578.2545000000002,
+      "cum_net_sniper": 576.198499999995
+    },
+    {
+      "idx": 522,
+      "time": 34642.7591,
+      "mid_price": 208.66930000000002,
+      "cum_gross": 589.5228000000002,
+      "cum_net_base": 587.430799999995,
+      "cum_gross_sniper": 589.5228000000002,
+      "cum_net_sniper": 587.430799999995
+    },
+    {
+      "idx": 531,
+      "time": 34643.0212,
+      "mid_price": 209.6486,
+      "cum_gross": 599.2116000000003,
+      "cum_net_base": 597.0835999999952,
+      "cum_gross_sniper": 599.2116000000003,
+      "cum_net_sniper": 597.0835999999952
+    },
+    {
+      "idx": 540,
+      "time": 34643.4168,
+      "mid_price": 209.59980000000002,
+      "cum_gross": 615.2906000000004,
+      "cum_net_base": 613.126599999995,
+      "cum_gross_sniper": 615.2906000000004,
+      "cum_net_sniper": 613.126599999995
+    },
+    {
+      "idx": 549,
+      "time": 34643.868,
+      "mid_price": 210.6612,
+      "cum_gross": 636.5296000000005,
+      "cum_net_base": 634.3295999999951,
+      "cum_gross_sniper": 636.5296000000005,
+      "cum_net_sniper": 634.3295999999951
+    },
+    {
+      "idx": 558,
+      "time": 34644.1599,
+      "mid_price": 211.5426,
+      "cum_gross": 656.8742000000004,
+      "cum_net_base": 654.6381999999953,
+      "cum_gross_sniper": 656.8742000000004,
+      "cum_net_sniper": 654.6381999999953
+    },
+    {
+      "idx": 567,
+      "time": 34644.8778,
+      "mid_price": 212.4239,
+      "cum_gross": 676.9876000000006,
+      "cum_net_base": 674.7155999999954,
+      "cum_gross_sniper": 676.9876000000006,
+      "cum_net_sniper": 674.7155999999954
+    },
+    {
+      "idx": 576,
+      "time": 34645.3306,
+      "mid_price": 214.08480000000003,
+      "cum_gross": 693.1744000000006,
+      "cum_net_base": 690.8663999999955,
+      "cum_gross_sniper": 693.1744000000006,
+      "cum_net_sniper": 690.8663999999955
+    },
+    {
+      "idx": 585,
+      "time": 34645.6709,
+      "mid_price": 214.52390000000003,
+      "cum_gross": 704.7024000000005,
+      "cum_net_base": 702.3583999999954,
+      "cum_gross_sniper": 704.7024000000005,
+      "cum_net_sniper": 702.3583999999954
+    },
+    {
+      "idx": 594,
+      "time": 34646.1622,
+      "mid_price": 215.2093,
+      "cum_gross": 717.8531000000005,
+      "cum_net_base": 715.4730999999954,
+      "cum_gross_sniper": 717.8531000000005,
+      "cum_net_sniper": 715.4730999999954
+    },
+    {
+      "idx": 603,
+      "time": 34646.361,
+      "mid_price": 215.60630000000003,
+      "cum_gross": 738.5480000000005,
+      "cum_net_base": 736.1319999999953,
+      "cum_gross_sniper": 738.5480000000005,
+      "cum_net_sniper": 736.1319999999953
+    },
+    {
+      "idx": 612,
+      "time": 34646.9583,
+      "mid_price": 216.6531,
+      "cum_gross": 756.2634000000005,
+      "cum_net_base": 753.8113999999954,
+      "cum_gross_sniper": 756.2634000000005,
+      "cum_net_sniper": 753.8113999999954
+    },
+    {
+      "idx": 621,
+      "time": 34647.4423,
+      "mid_price": 218.2716,
+      "cum_gross": 775.2337000000007,
+      "cum_net_base": 772.7456999999954,
+      "cum_gross_sniper": 775.2337000000007,
+      "cum_net_sniper": 772.7456999999954
+    },
+    {
+      "idx": 630,
+      "time": 34647.7955,
+      "mid_price": 218.1886,
+      "cum_gross": 798.7131000000005,
+      "cum_net_base": 796.1890999999954,
+      "cum_gross_sniper": 798.7131000000005,
+      "cum_net_sniper": 796.1890999999954
+    },
+    {
+      "idx": 639,
+      "time": 34648.2453,
+      "mid_price": 219.9857,
+      "cum_gross": 821.5485000000006,
+      "cum_net_base": 818.9884999999954,
+      "cum_gross_sniper": 821.5485000000006,
+      "cum_net_sniper": 818.9884999999954
+    },
+    {
+      "idx": 648,
+      "time": 34648.6592,
+      "mid_price": 221.0104,
+      "cum_gross": 834.9282000000007,
+      "cum_net_base": 832.3321999999956,
+      "cum_gross_sniper": 834.9282000000007,
+      "cum_net_sniper": 832.3321999999956
+    },
+    {
+      "idx": 657,
+      "time": 34649.2245,
+      "mid_price": 222.14190000000002,
+      "cum_gross": 850.6872000000008,
+      "cum_net_base": 848.0551999999957,
+      "cum_gross_sniper": 850.6872000000008,
+      "cum_net_sniper": 848.0551999999957
+    },
+    {
+      "idx": 666,
+      "time": 34649.7475,
+      "mid_price": 222.2289,
+      "cum_gross": 876.4372000000006,
+      "cum_net_base": 873.7691999999956,
+      "cum_gross_sniper": 876.4372000000006,
+      "cum_net_sniper": 873.7691999999956
+    },
+    {
+      "idx": 675,
+      "time": 34650.5074,
+      "mid_price": 223.544,
+      "cum_gross": 908.8604000000007,
+      "cum_net_base": 906.1563999999956,
+      "cum_gross_sniper": 908.8604000000007,
+      "cum_net_sniper": 906.1563999999956
+    },
+    {
+      "idx": 684,
+      "time": 34650.7733,
+      "mid_price": 225.19650000000001,
+      "cum_gross": 935.5502000000008,
+      "cum_net_base": 932.8101999999958,
+      "cum_gross_sniper": 935.5502000000008,
+      "cum_net_sniper": 932.8101999999958
+    },
+    {
+      "idx": 693,
+      "time": 34651.4353,
+      "mid_price": 226.71250000000003,
+      "cum_gross": 962.2019000000009,
+      "cum_net_base": 959.425899999996,
+      "cum_gross_sniper": 962.2019000000009,
+      "cum_net_sniper": 959.425899999996
+    },
+    {
+      "idx": 702,
+      "time": 34651.8844,
+      "mid_price": 228.0351,
+      "cum_gross": 993.6913000000009,
+      "cum_net_base": 990.8792999999961,
+      "cum_gross_sniper": 993.6913000000009,
+      "cum_net_sniper": 990.8792999999961
+    },
+    {
+      "idx": 711,
+      "time": 34652.1767,
+      "mid_price": 229.6531,
+      "cum_gross": 1020.3996000000009,
+      "cum_net_base": 1017.5515999999961,
+      "cum_gross_sniper": 1020.3996000000009,
+      "cum_net_sniper": 1017.5515999999961
+    },
+    {
+      "idx": 720,
+      "time": 34652.5507,
+      "mid_price": 230.9862,
+      "cum_gross": 1047.1881000000008,
+      "cum_net_base": 1044.3040999999964,
+      "cum_gross_sniper": 1047.1881000000008,
+      "cum_net_sniper": 1044.3040999999964
+    },
+    {
+      "idx": 729,
+      "time": 34652.9961,
+      "mid_price": 232.1635,
+      "cum_gross": 1075.0558000000008,
+      "cum_net_base": 1072.1357999999962,
+      "cum_gross_sniper": 1075.0558000000008,
+      "cum_net_sniper": 1072.1357999999962
+    },
+    {
+      "idx": 738,
+      "time": 34653.3714,
+      "mid_price": 233.40590000000003,
+      "cum_gross": 1097.7992000000006,
+      "cum_net_base": 1094.8431999999966,
+      "cum_gross_sniper": 1097.7992000000006,
+      "cum_net_sniper": 1094.8431999999966
+    },
+    {
+      "idx": 747,
+      "time": 34653.8815,
+      "mid_price": 234.8214,
+      "cum_gross": 1117.4522000000009,
+      "cum_net_base": 1114.4601999999961,
+      "cum_gross_sniper": 1117.4522000000009,
+      "cum_net_sniper": 1114.4601999999961
+    },
+    {
+      "idx": 756,
+      "time": 34654.5661,
+      "mid_price": 235.6687,
+      "cum_gross": 1144.2291000000007,
+      "cum_net_base": 1141.2010999999961,
+      "cum_gross_sniper": 1144.2291000000007,
+      "cum_net_sniper": 1141.2010999999961
+    },
+    {
+      "idx": 765,
+      "time": 34655.0894,
+      "mid_price": 236.9737,
+      "cum_gross": 1169.6958000000009,
+      "cum_net_base": 1166.631799999996,
+      "cum_gross_sniper": 1169.6958000000009,
+      "cum_net_sniper": 1166.631799999996
+    },
+    {
+      "idx": 774,
+      "time": 34655.4223,
+      "mid_price": 238.6998,
+      "cum_gross": 1198.3737000000006,
+      "cum_net_base": 1195.273699999996,
+      "cum_gross_sniper": 1198.3737000000006,
+      "cum_net_sniper": 1195.273699999996
+    },
+    {
+      "idx": 783,
+      "time": 34655.9018,
+      "mid_price": 239.74310000000003,
+      "cum_gross": 1227.7765000000004,
+      "cum_net_base": 1224.640499999996,
+      "cum_gross_sniper": 1227.7765000000004,
+      "cum_net_sniper": 1224.640499999996
+    },
+    {
+      "idx": 792,
+      "time": 34656.2424,
+      "mid_price": 241.4561,
+      "cum_gross": 1245.4386000000004,
+      "cum_net_base": 1242.266599999996,
+      "cum_gross_sniper": 1245.4386000000004,
+      "cum_net_sniper": 1242.266599999996
+    },
+    {
+      "idx": 801,
+      "time": 34656.7068,
+      "mid_price": 242.4674,
+      "cum_gross": 1259.3789000000004,
+      "cum_net_base": 1256.1708999999962,
+      "cum_gross_sniper": 1259.3789000000004,
+      "cum_net_sniper": 1256.1708999999962
+    },
+    {
+      "idx": 810,
+      "time": 34657.1445,
+      "mid_price": 242.3716,
+      "cum_gross": 1279.0858000000005,
+      "cum_net_base": 1275.8417999999965,
+      "cum_gross_sniper": 1279.0858000000005,
+      "cum_net_sniper": 1275.8417999999965
+    },
+    {
+      "idx": 819,
+      "time": 34657.6165,
+      "mid_price": 243.661,
+      "cum_gross": 1305.3086000000003,
+      "cum_net_base": 1302.0285999999967,
+      "cum_gross_sniper": 1305.3086000000003,
+      "cum_net_sniper": 1302.0285999999967
+    },
+    {
+      "idx": 828,
+      "time": 34657.7974,
+      "mid_price": 245.1556,
+      "cum_gross": 1329.9754000000005,
+      "cum_net_base": 1326.6593999999968,
+      "cum_gross_sniper": 1329.9754000000005,
+      "cum_net_sniper": 1326.6593999999968
+    },
+    {
+      "idx": 837,
+      "time": 34658.3754,
+      "mid_price": 246.6558,
+      "cum_gross": 1349.9648000000004,
+      "cum_net_base": 1346.6127999999967,
+      "cum_gross_sniper": 1349.9648000000004,
+      "cum_net_sniper": 1346.6127999999967
+    },
+    {
+      "idx": 846,
+      "time": 34659.0177,
+      "mid_price": 247.07940000000002,
+      "cum_gross": 1370.8149000000003,
+      "cum_net_base": 1367.4268999999972,
+      "cum_gross_sniper": 1370.8149000000003,
+      "cum_net_sniper": 1367.4268999999972
+    },
+    {
+      "idx": 855,
+      "time": 34659.4702,
+      "mid_price": 248.53250000000003,
+      "cum_gross": 1384.7421000000004,
+      "cum_net_base": 1381.3180999999972,
+      "cum_gross_sniper": 1384.7421000000004,
+      "cum_net_sniper": 1381.3180999999972
+    },
+    {
+      "idx": 864,
+      "time": 34659.7076,
+      "mid_price": 249.84450000000004,
+      "cum_gross": 1393.0061000000005,
+      "cum_net_base": 1389.5460999999968,
+      "cum_gross_sniper": 1393.0061000000005,
+      "cum_net_sniper": 1389.5460999999968
+    },
+    {
+      "idx": 873,
+      "time": 34660.2115,
+      "mid_price": 249.2745,
+      "cum_gross": 1402.6622000000007,
+      "cum_net_base": 1399.166199999997,
+      "cum_gross_sniper": 1402.6622000000007,
+      "cum_net_sniper": 1399.166199999997
+    },
+    {
+      "idx": 882,
+      "time": 34660.6183,
+      "mid_price": 250.248,
+      "cum_gross": 1415.2610000000006,
+      "cum_net_base": 1411.7289999999969,
+      "cum_gross_sniper": 1415.2610000000006,
+      "cum_net_sniper": 1411.7289999999969
+    },
+    {
+      "idx": 891,
+      "time": 34661.1626,
+      "mid_price": 250.56490000000002,
+      "cum_gross": 1431.3054000000006,
+      "cum_net_base": 1427.737399999997,
+      "cum_gross_sniper": 1431.3054000000006,
+      "cum_net_sniper": 1427.737399999997
+    },
+    {
+      "idx": 900,
+      "time": 34661.5629,
+      "mid_price": 251.6998,
+      "cum_gross": 1451.0992000000008,
+      "cum_net_base": 1447.4951999999969,
+      "cum_gross_sniper": 1451.0992000000008,
+      "cum_net_sniper": 1447.4951999999969
+    },
+    {
+      "idx": 909,
+      "time": 34661.8461,
+      "mid_price": 252.4497,
+      "cum_gross": 1466.489000000001,
+      "cum_net_base": 1462.848999999997,
+      "cum_gross_sniper": 1466.489000000001,
+      "cum_net_sniper": 1462.848999999997
+    },
+    {
+      "idx": 918,
+      "time": 34662.1644,
+      "mid_price": 253.30880000000002,
+      "cum_gross": 1483.620800000001,
+      "cum_net_base": 1479.9447999999968,
+      "cum_gross_sniper": 1483.620800000001,
+      "cum_net_sniper": 1479.9447999999968
+    },
+    {
+      "idx": 927,
+      "time": 34662.7079,
+      "mid_price": 253.9017,
+      "cum_gross": 1499.3481000000013,
+      "cum_net_base": 1495.6360999999965,
+      "cum_gross_sniper": 1499.3481000000013,
+      "cum_net_sniper": 1495.6360999999965
+    },
+    {
+      "idx": 936,
+      "time": 34662.9787,
+      "mid_price": 255.20140000000004,
+      "cum_gross": 1515.4948000000013,
+      "cum_net_base": 1511.7467999999967,
+      "cum_gross_sniper": 1515.4948000000013,
+      "cum_net_sniper": 1511.7467999999967
+    },
+    {
+      "idx": 945,
+      "time": 34663.7974,
+      "mid_price": 255.4597,
+      "cum_gross": 1538.9140000000014,
+      "cum_net_base": 1535.1299999999967,
+      "cum_gross_sniper": 1538.9140000000014,
+      "cum_net_sniper": 1535.1299999999967
+    },
+    {
+      "idx": 954,
+      "time": 34664.363,
+      "mid_price": 256.923,
+      "cum_gross": 1559.9004000000018,
+      "cum_net_base": 1556.0803999999966,
+      "cum_gross_sniper": 1559.9004000000018,
+      "cum_net_sniper": 1556.0803999999966
+    },
+    {
+      "idx": 963,
+      "time": 34664.8065,
+      "mid_price": 258.19460000000004,
+      "cum_gross": 1573.7771000000016,
+      "cum_net_base": 1569.921099999997,
+      "cum_gross_sniper": 1573.7771000000016,
+      "cum_net_sniper": 1569.921099999997
+    },
+    {
+      "idx": 972,
+      "time": 34665.1494,
+      "mid_price": 258.6123,
+      "cum_gross": 1595.1822000000016,
+      "cum_net_base": 1591.2901999999972,
+      "cum_gross_sniper": 1595.1822000000016,
+      "cum_net_sniper": 1591.2901999999972
+    },
+    {
+      "idx": 981,
+      "time": 34665.6684,
+      "mid_price": 259.2749,
+      "cum_gross": 1621.2102000000016,
+      "cum_net_base": 1617.2821999999976,
+      "cum_gross_sniper": 1621.2102000000016,
+      "cum_net_sniper": 1617.2821999999976
+    },
+    {
+      "idx": 990,
+      "time": 34666.0878,
+      "mid_price": 260.9291,
+      "cum_gross": 1647.7770000000016,
+      "cum_net_base": 1643.8129999999978,
+      "cum_gross_sniper": 1647.7770000000016,
+      "cum_net_sniper": 1643.8129999999978
+    },
+    {
+      "idx": 999,
+      "time": 34666.7344,
+      "mid_price": 262.48670000000004,
+      "cum_gross": 1674.578100000002,
+      "cum_net_base": 1670.5780999999974,
+      "cum_gross_sniper": 1674.578100000002,
+      "cum_net_sniper": 1670.5780999999974
+    },
+    {
+      "idx": 1008,
+      "time": 34667.1343,
+      "mid_price": 263.3234,
+      "cum_gross": 1693.792600000002,
+      "cum_net_base": 1689.756599999998,
+      "cum_gross_sniper": 1693.792600000002,
+      "cum_net_sniper": 1689.756599999998
+    },
+    {
+      "idx": 1017,
+      "time": 34667.6229,
+      "mid_price": 264.7762,
+      "cum_gross": 1699.3222000000023,
+      "cum_net_base": 1695.250199999998,
+      "cum_gross_sniper": 1699.3222000000023,
+      "cum_net_sniper": 1695.250199999998
+    },
+    {
+      "idx": 1026,
+      "time": 34668.0346,
+      "mid_price": 264.9497,
+      "cum_gross": 1707.9499000000023,
+      "cum_net_base": 1703.841899999998,
+      "cum_gross_sniper": 1707.9499000000023,
+      "cum_net_sniper": 1703.841899999998
+    },
+    {
+      "idx": 1035,
+      "time": 34668.4628,
+      "mid_price": 265.3806,
+      "cum_gross": 1724.9470000000022,
+      "cum_net_base": 1720.8029999999983,
+      "cum_gross_sniper": 1724.9470000000022,
+      "cum_net_sniper": 1720.8029999999983
+    },
+    {
+      "idx": 1044,
+      "time": 34669.0718,
+      "mid_price": 266.20550000000003,
+      "cum_gross": 1738.8944000000024,
+      "cum_net_base": 1734.7143999999982,
+      "cum_gross_sniper": 1738.8944000000024,
+      "cum_net_sniper": 1734.7143999999982
+    },
+    {
+      "idx": 1053,
+      "time": 34669.8058,
+      "mid_price": 267.164,
+      "cum_gross": 1746.2283000000025,
+      "cum_net_base": 1742.012299999998,
+      "cum_gross_sniper": 1746.2283000000025,
+      "cum_net_sniper": 1742.012299999998
+    },
+    {
+      "idx": 1062,
+      "time": 34670.2471,
+      "mid_price": 267.38250000000005,
+      "cum_gross": 1748.7173000000025,
+      "cum_net_base": 1744.4652999999978,
+      "cum_gross_sniper": 1748.7173000000025,
+      "cum_net_sniper": 1744.4652999999978
+    },
+    {
+      "idx": 1071,
+      "time": 34670.5597,
+      "mid_price": 267.3011,
+      "cum_gross": 1759.8523000000023,
+      "cum_net_base": 1755.564299999998,
+      "cum_gross_sniper": 1759.8523000000023,
+      "cum_net_sniper": 1755.564299999998
+    },
+    {
+      "idx": 1080,
+      "time": 34671.369,
+      "mid_price": 267.4628,
+      "cum_gross": 1775.6144000000022,
+      "cum_net_base": 1771.2903999999978,
+      "cum_gross_sniper": 1775.6144000000022,
+      "cum_net_sniper": 1771.2903999999978
+    },
+    {
+      "idx": 1089,
+      "time": 34671.5851,
+      "mid_price": 269.3684,
+      "cum_gross": 1795.401400000002,
+      "cum_net_base": 1791.041399999998,
+      "cum_gross_sniper": 1795.401400000002,
+      "cum_net_sniper": 1791.041399999998
+    },
+    {
+      "idx": 1098,
+      "time": 34671.9983,
+      "mid_price": 269.5473,
+      "cum_gross": 1811.2184000000018,
+      "cum_net_base": 1806.8223999999984,
+      "cum_gross_sniper": 1811.2184000000018,
+      "cum_net_sniper": 1806.8223999999984
+    },
+    {
+      "idx": 1107,
+      "time": 34672.4153,
+      "mid_price": 270.67010000000005,
+      "cum_gross": 1826.4229000000023,
+      "cum_net_base": 1821.9908999999986,
+      "cum_gross_sniper": 1826.4229000000023,
+      "cum_net_sniper": 1821.9908999999986
+    },
+    {
+      "idx": 1116,
+      "time": 34673.1764,
+      "mid_price": 271.00530000000003,
+      "cum_gross": 1849.924100000002,
+      "cum_net_base": 1845.4560999999987,
+      "cum_gross_sniper": 1849.924100000002,
+      "cum_net_sniper": 1845.4560999999987
+    },
+    {
+      "idx": 1125,
+      "time": 34673.7807,
+      "mid_price": 272.53880000000004,
+      "cum_gross": 1869.668400000002,
+      "cum_net_base": 1865.1643999999994,
+      "cum_gross_sniper": 1869.668400000002,
+      "cum_net_sniper": 1865.1643999999994
+    },
+    {
+      "idx": 1134,
+      "time": 34674.6167,
+      "mid_price": 273.4959,
+      "cum_gross": 1882.6279000000018,
+      "cum_net_base": 1878.0878999999993,
+      "cum_gross_sniper": 1882.6279000000018,
+      "cum_net_sniper": 1878.0878999999993
+    },
+    {
+      "idx": 1143,
+      "time": 34675.1086,
+      "mid_price": 274.01570000000004,
+      "cum_gross": 1890.9902000000016,
+      "cum_net_base": 1886.4141999999995,
+      "cum_gross_sniper": 1890.9902000000016,
+      "cum_net_sniper": 1886.4141999999995
+    },
+    {
+      "idx": 1152,
+      "time": 34675.4332,
+      "mid_price": 274.6291,
+      "cum_gross": 1893.0909000000015,
+      "cum_net_base": 1888.4788999999996,
+      "cum_gross_sniper": 1893.0909000000015,
+      "cum_net_sniper": 1888.4788999999996
+    },
+    {
+      "idx": 1161,
+      "time": 34675.6056,
+      "mid_price": 274.2653,
+      "cum_gross": 1902.0487000000014,
+      "cum_net_base": 1897.4006999999997,
+      "cum_gross_sniper": 1902.0487000000014,
+      "cum_net_sniper": 1897.4006999999997
+    },
+    {
+      "idx": 1170,
+      "time": 34676.2621,
+      "mid_price": 274.7999,
+      "cum_gross": 1910.5585000000015,
+      "cum_net_base": 1905.8745000000001,
+      "cum_gross_sniper": 1910.5585000000015,
+      "cum_net_sniper": 1905.8745000000001
+    },
+    {
+      "idx": 1179,
+      "time": 34676.9241,
+      "mid_price": 276.0077,
+      "cum_gross": 1914.6345000000015,
+      "cum_net_base": 1909.9145000000003,
+      "cum_gross_sniper": 1914.6345000000015,
+      "cum_net_sniper": 1909.9145000000003
+    },
+    {
+      "idx": 1188,
+      "time": 34677.4824,
+      "mid_price": 275.5675,
+      "cum_gross": 1921.2303000000015,
+      "cum_net_base": 1916.4743000000008,
+      "cum_gross_sniper": 1921.2303000000015,
+      "cum_net_sniper": 1916.4743000000008
+    },
+    {
+      "idx": 1197,
+      "time": 34677.8067,
+      "mid_price": 275.2239,
+      "cum_gross": 1930.4948000000015,
+      "cum_net_base": 1925.702800000001,
+      "cum_gross_sniper": 1930.4948000000015,
+      "cum_net_sniper": 1925.702800000001
+    },
+    {
+      "idx": 1206,
+      "time": 34678.2291,
+      "mid_price": 274.6938,
+      "cum_gross": 1943.8475000000012,
+      "cum_net_base": 1939.0195000000012,
+      "cum_gross_sniper": 1943.8475000000012,
+      "cum_net_sniper": 1939.0195000000012
+    },
+    {
+      "idx": 1215,
+      "time": 34678.8052,
+      "mid_price": 274.37390000000005,
+      "cum_gross": 1952.9727000000012,
+      "cum_net_base": 1948.1087000000016,
+      "cum_gross_sniper": 1952.9727000000012,
+      "cum_net_sniper": 1948.1087000000016
+    },
+    {
+      "idx": 1224,
+      "time": 34679.2907,
+      "mid_price": 273.211,
+      "cum_gross": 1962.147600000001,
+      "cum_net_base": 1957.247600000002,
+      "cum_gross_sniper": 1962.147600000001,
+      "cum_net_sniper": 1957.247600000002
+    },
+    {
+      "idx": 1233,
+      "time": 34679.7149,
+      "mid_price": 273.3811,
+      "cum_gross": 1975.1697000000015,
+      "cum_net_base": 1970.233700000002,
+      "cum_gross_sniper": 1975.1697000000015,
+      "cum_net_sniper": 1970.233700000002
+    },
+    {
+      "idx": 1242,
+      "time": 34680.4153,
+      "mid_price": 272.1388,
+      "cum_gross": 1993.1854000000012,
+      "cum_net_base": 1988.213400000002,
+      "cum_gross_sniper": 1993.1854000000012,
+      "cum_net_sniper": 1988.213400000002
+    },
+    {
+      "idx": 1251,
+      "time": 34680.7284,
+      "mid_price": 271.7255,
+      "cum_gross": 2011.860700000001,
+      "cum_net_base": 2006.8527000000017,
+      "cum_gross_sniper": 2011.860700000001,
+      "cum_net_sniper": 2006.8527000000017
+    },
+    {
+      "idx": 1260,
+      "time": 34681.078,
+      "mid_price": 270.7482,
+      "cum_gross": 2025.729500000001,
+      "cum_net_base": 2020.6855000000016,
+      "cum_gross_sniper": 2025.729500000001,
+      "cum_net_sniper": 2020.6855000000016
+    },
+    {
+      "idx": 1269,
+      "time": 34681.5363,
+      "mid_price": 269.8679,
+      "cum_gross": 2035.350100000001,
+      "cum_net_base": 2030.2701000000015,
+      "cum_gross_sniper": 2035.350100000001,
+      "cum_net_sniper": 2030.2701000000015
+    },
+    {
+      "idx": 1278,
+      "time": 34681.9661,
+      "mid_price": 269.2926,
+      "cum_gross": 2044.7654000000011,
+      "cum_net_base": 2039.6494000000016,
+      "cum_gross_sniper": 2044.7654000000011,
+      "cum_net_sniper": 2039.6494000000016
+    },
+    {
+      "idx": 1287,
+      "time": 34682.4094,
+      "mid_price": 269.4543,
+      "cum_gross": 2057.814200000001,
+      "cum_net_base": 2052.662200000002,
+      "cum_gross_sniper": 2057.814200000001,
+      "cum_net_sniper": 2052.662200000002
+    },
+    {
+      "idx": 1296,
+      "time": 34682.8907,
+      "mid_price": 268.3851,
+      "cum_gross": 2071.1882000000014,
+      "cum_net_base": 2066.0002000000018,
+      "cum_gross_sniper": 2071.1882000000014,
+      "cum_net_sniper": 2066.0002000000018
+    },
+    {
+      "idx": 1305,
+      "time": 34683.6674,
+      "mid_price": 267.8474,
+      "cum_gross": 2080.274800000001,
+      "cum_net_base": 2075.0508000000013,
+      "cum_gross_sniper": 2080.274800000001,
+      "cum_net_sniper": 2075.0508000000013
+    },
+    {
+      "idx": 1314,
+      "time": 34684.2554,
+      "mid_price": 266.87120000000004,
+      "cum_gross": 2085.8864000000012,
+      "cum_net_base": 2080.6264000000015,
+      "cum_gross_sniper": 2085.8864000000012,
+      "cum_net_sniper": 2080.6264000000015
+    },
+    {
+      "idx": 1323,
+      "time": 34684.9629,
+      "mid_price": 267.1667,
+      "cum_gross": 2103.4876000000013,
+      "cum_net_base": 2098.191600000001,
+      "cum_gross_sniper": 2103.4876000000013,
+      "cum_net_sniper": 2098.191600000001
+    },
+    {
+      "idx": 1332,
+      "time": 34685.5279,
+      "mid_price": 266.26890000000003,
+      "cum_gross": 2123.198400000001,
+      "cum_net_base": 2117.8664000000012,
+      "cum_gross_sniper": 2123.198400000001,
+      "cum_net_sniper": 2117.8664000000012
+    },
+    {
+      "idx": 1341,
+      "time": 34685.8215,
+      "mid_price": 264.7456,
+      "cum_gross": 2130.1333000000013,
+      "cum_net_base": 2124.765300000002,
+      "cum_gross_sniper": 2130.1333000000013,
+      "cum_net_sniper": 2124.765300000002
+    },
+    {
+      "idx": 1350,
+      "time": 34686.2889,
+      "mid_price": 264.9198,
+      "cum_gross": 2137.072700000001,
+      "cum_net_base": 2131.6687000000015,
+      "cum_gross_sniper": 2137.072700000001,
+      "cum_net_sniper": 2131.6687000000015
+    },
+    {
+      "idx": 1359,
+      "time": 34686.9258,
+      "mid_price": 264.38390000000004,
+      "cum_gross": 2144.8193000000015,
+      "cum_net_base": 2139.379300000001,
+      "cum_gross_sniper": 2144.8193000000015,
+      "cum_net_sniper": 2139.379300000001
+    },
+    {
+      "idx": 1368,
+      "time": 34687.4141,
+      "mid_price": 263.4993,
+      "cum_gross": 2153.651100000002,
+      "cum_net_base": 2148.175100000001,
+      "cum_gross_sniper": 2153.651100000002,
+      "cum_net_sniper": 2148.175100000001
+    },
+    {
+      "idx": 1377,
+      "time": 34687.9012,
+      "mid_price": 263.7642,
+      "cum_gross": 2171.7982000000015,
+      "cum_net_base": 2166.2862000000005,
+      "cum_gross_sniper": 2171.7982000000015,
+      "cum_net_sniper": 2166.2862000000005
+    },
+    {
+      "idx": 1386,
+      "time": 34688.5638,
+      "mid_price": 262.9504,
+      "cum_gross": 2197.7901000000015,
+      "cum_net_base": 2192.2421,
+      "cum_gross_sniper": 2197.7901000000015,
+      "cum_net_sniper": 2192.2421
+    },
+    {
+      "idx": 1395,
+      "time": 34688.9192,
+      "mid_price": 261.3867,
+      "cum_gross": 2212.9218000000014,
+      "cum_net_base": 2207.3378000000002,
+      "cum_gross_sniper": 2212.9218000000014,
+      "cum_net_sniper": 2207.3378000000002
+    },
+    {
+      "idx": 1404,
+      "time": 34689.4048,
+      "mid_price": 260.5713,
+      "cum_gross": 2223.075400000001,
+      "cum_net_base": 2217.4554000000003,
+      "cum_gross_sniper": 2223.075400000001,
+      "cum_net_sniper": 2217.4554000000003
+    },
+    {
+      "idx": 1413,
+      "time": 34689.8367,
+      "mid_price": 260.228,
+      "cum_gross": 2241.156400000001,
+      "cum_net_base": 2235.5004000000004,
+      "cum_gross_sniper": 2241.156400000001,
+      "cum_net_sniper": 2235.5004000000004
+    },
+    {
+      "idx": 1422,
+      "time": 34690.2579,
+      "mid_price": 259.1409,
+      "cum_gross": 2258.2302000000013,
+      "cum_net_base": 2252.5382000000004,
+      "cum_gross_sniper": 2258.2302000000013,
+      "cum_net_sniper": 2252.5382000000004
+    },
+    {
+      "idx": 1431,
+      "time": 34690.6908,
+      "mid_price": 258.37530000000004,
+      "cum_gross": 2276.045100000001,
+      "cum_net_base": 2270.3171000000007,
+      "cum_gross_sniper": 2276.045100000001,
+      "cum_net_sniper": 2270.3171000000007
+    },
+    {
+      "idx": 1440,
+      "time": 34691.1669,
+      "mid_price": 257.62170000000003,
+      "cum_gross": 2299.3691000000013,
+      "cum_net_base": 2293.6051000000007,
+      "cum_gross_sniper": 2299.3691000000013,
+      "cum_net_sniper": 2293.6051000000007
+    },
+    {
+      "idx": 1449,
+      "time": 34691.5513,
+      "mid_price": 256.4166,
+      "cum_gross": 2325.790400000001,
+      "cum_net_base": 2319.990400000001,
+      "cum_gross_sniper": 2325.790400000001,
+      "cum_net_sniper": 2319.990400000001
+    },
+    {
+      "idx": 1458,
+      "time": 34691.8762,
+      "mid_price": 255.327,
+      "cum_gross": 2347.1102000000005,
+      "cum_net_base": 2341.2742000000003,
+      "cum_gross_sniper": 2347.1102000000005,
+      "cum_net_sniper": 2341.2742000000003
+    },
+    {
+      "idx": 1467,
+      "time": 34692.7533,
+      "mid_price": 253.7862,
+      "cum_gross": 2364.8297,
+      "cum_net_base": 2358.9577000000004,
+      "cum_gross_sniper": 2364.8297,
+      "cum_net_sniper": 2358.9577000000004
+    },
+    {
+      "idx": 1476,
+      "time": 34693.3979,
+      "mid_price": 253.2083,
+      "cum_gross": 2387.8304000000007,
+      "cum_net_base": 2381.9224000000004,
+      "cum_gross_sniper": 2387.8304000000007,
+      "cum_net_sniper": 2381.9224000000004
+    },
+    {
+      "idx": 1485,
+      "time": 34693.7002,
+      "mid_price": 252.284,
+      "cum_gross": 2410.615100000001,
+      "cum_net_base": 2404.671100000001,
+      "cum_gross_sniper": 2410.615100000001,
+      "cum_net_sniper": 2404.671100000001
+    },
+    {
+      "idx": 1494,
+      "time": 34694.197,
+      "mid_price": 251.12040000000002,
+      "cum_gross": 2429.1625000000004,
+      "cum_net_base": 2423.1825000000013,
+      "cum_gross_sniper": 2429.1625000000004,
+      "cum_net_sniper": 2423.1825000000013
+    },
+    {
+      "idx": 1503,
+      "time": 34694.9487,
+      "mid_price": 249.9241,
+      "cum_gross": 2441.1942000000004,
+      "cum_net_base": 2435.1782000000017,
+      "cum_gross_sniper": 2441.1942000000004,
+      "cum_net_sniper": 2435.1782000000017
+    },
+    {
+      "idx": 1512,
+      "time": 34695.3147,
+      "mid_price": 248.9182,
+      "cum_gross": 2454.8876000000005,
+      "cum_net_base": 2448.835600000002,
+      "cum_gross_sniper": 2454.8876000000005,
+      "cum_net_sniper": 2448.835600000002
+    },
+    {
+      "idx": 1521,
+      "time": 34695.591,
+      "mid_price": 248.9413,
+      "cum_gross": 2467.4513000000006,
+      "cum_net_base": 2461.3633000000023,
+      "cum_gross_sniper": 2467.4513000000006,
+      "cum_net_sniper": 2461.3633000000023
+    },
+    {
+      "idx": 1530,
+      "time": 34696.0922,
+      "mid_price": 247.6006,
+      "cum_gross": 2479.437800000001,
+      "cum_net_base": 2473.3138000000026,
+      "cum_gross_sniper": 2479.437800000001,
+      "cum_net_sniper": 2473.3138000000026
+    },
+    {
+      "idx": 1539,
+      "time": 34696.4184,
+      "mid_price": 247.55740000000003,
+      "cum_gross": 2499.6309000000006,
+      "cum_net_base": 2493.4709000000025,
+      "cum_gross_sniper": 2499.6309000000006,
+      "cum_net_sniper": 2493.4709000000025
+    },
+    {
+      "idx": 1548,
+      "time": 34696.6055,
+      "mid_price": 246.50990000000002,
+      "cum_gross": 2521.4100000000003,
+      "cum_net_base": 2515.2140000000027,
+      "cum_gross_sniper": 2521.4100000000003,
+      "cum_net_sniper": 2515.2140000000027
+    },
+    {
+      "idx": 1557,
+      "time": 34696.9348,
+      "mid_price": 245.1003,
+      "cum_gross": 2541.6748,
+      "cum_net_base": 2535.4428000000025,
+      "cum_gross_sniper": 2541.6748,
+      "cum_net_sniper": 2535.4428000000025
+    },
+    {
+      "idx": 1566,
+      "time": 34697.5659,
+      "mid_price": 244.23990000000003,
+      "cum_gross": 2560.5976,
+      "cum_net_base": 2554.329600000002,
+      "cum_gross_sniper": 2560.5976,
+      "cum_net_sniper": 2554.329600000002
+    },
+    {
+      "idx": 1575,
+      "time": 34697.956,
+      "mid_price": 242.9264,
+      "cum_gross": 2586.6721000000007,
+      "cum_net_base": 2580.368100000001,
+      "cum_gross_sniper": 2586.6721000000007,
+      "cum_net_sniper": 2580.368100000001
+    },
+    {
+      "idx": 1584,
+      "time": 34698.5061,
+      "mid_price": 242.5478,
+      "cum_gross": 2619.3853000000004,
+      "cum_net_base": 2613.045300000001,
+      "cum_gross_sniper": 2619.3853000000004,
+      "cum_net_sniper": 2613.045300000001
+    },
+    {
+      "idx": 1593,
+      "time": 34699.0267,
+      "mid_price": 240.2475,
+      "cum_gross": 2644.1301000000003,
+      "cum_net_base": 2637.754100000001,
+      "cum_gross_sniper": 2644.1301000000003,
+      "cum_net_sniper": 2637.754100000001
+    },
+    {
+      "idx": 1602,
+      "time": 34699.47,
+      "mid_price": 238.70050000000003,
+      "cum_gross": 2665.1505,
+      "cum_net_base": 2658.7385000000017,
+      "cum_gross_sniper": 2665.1505,
+      "cum_net_sniper": 2658.7385000000017
+    },
+    {
+      "idx": 1611,
+      "time": 34699.8295,
+      "mid_price": 238.123,
+      "cum_gross": 2689.975700000001,
+      "cum_net_base": 2683.5277000000015,
+      "cum_gross_sniper": 2689.975700000001,
+      "cum_net_sniper": 2683.5277000000015
+    },
+    {
+      "idx": 1620,
+      "time": 34700.5075,
+      "mid_price": 236.8594,
+      "cum_gross": 2715.170100000001,
+      "cum_net_base": 2708.6861000000013,
+      "cum_gross_sniper": 2715.170100000001,
+      "cum_net_sniper": 2708.6861000000013
+    },
+    {
+      "idx": 1629,
+      "time": 34701.1628,
+      "mid_price": 235.4352,
+      "cum_gross": 2731.6173000000017,
+      "cum_net_base": 2725.0973000000013,
+      "cum_gross_sniper": 2731.6173000000017,
+      "cum_net_sniper": 2725.0973000000013
+    },
+    {
+      "idx": 1638,
+      "time": 34701.7552,
+      "mid_price": 234.4164,
+      "cum_gross": 2748.2818000000016,
+      "cum_net_base": 2741.7258000000015,
+      "cum_gross_sniper": 2748.2818000000016,
+      "cum_net_sniper": 2741.7258000000015
+    },
+    {
+      "idx": 1647,
+      "time": 34702.1178,
+      "mid_price": 234.1753,
+      "cum_gross": 2766.8535000000015,
+      "cum_net_base": 2760.261500000002,
+      "cum_gross_sniper": 2766.8535000000015,
+      "cum_net_sniper": 2760.261500000002
+    },
+    {
+      "idx": 1656,
+      "time": 34702.6298,
+      "mid_price": 232.812,
+      "cum_gross": 2777.9079000000015,
+      "cum_net_base": 2771.279900000002,
+      "cum_gross_sniper": 2777.9079000000015,
+      "cum_net_sniper": 2771.279900000002
+    },
+    {
+      "idx": 1665,
+      "time": 34703.1115,
+      "mid_price": 232.2769,
+      "cum_gross": 2787.8165000000013,
+      "cum_net_base": 2781.152500000002,
+      "cum_gross_sniper": 2787.8165000000013,
+      "cum_net_sniper": 2781.152500000002
+    },
+    {
+      "idx": 1674,
+      "time": 34703.5775,
+      "mid_price": 231.9858,
+      "cum_gross": 2806.1945000000014,
+      "cum_net_base": 2799.4945000000016,
+      "cum_gross_sniper": 2806.1945000000014,
+      "cum_net_sniper": 2799.4945000000016
+    },
+    {
+      "idx": 1683,
+      "time": 34704.3694,
+      "mid_price": 230.9792,
+      "cum_gross": 2828.6517000000017,
+      "cum_net_base": 2821.9157000000014,
+      "cum_gross_sniper": 2828.6517000000017,
+      "cum_net_sniper": 2821.9157000000014
+    },
+    {
+      "idx": 1692,
+      "time": 34704.7635,
+      "mid_price": 230.20620000000002,
+      "cum_gross": 2849.336300000002,
+      "cum_net_base": 2842.564300000002,
+      "cum_gross_sniper": 2849.336300000002,
+      "cum_net_sniper": 2842.564300000002
+    },
+    {
+      "idx": 1701,
+      "time": 34705.3262,
+      "mid_price": 228.41860000000003,
+      "cum_gross": 2866.980000000003,
+      "cum_net_base": 2860.172000000002,
+      "cum_gross_sniper": 2866.980000000003,
+      "cum_net_sniper": 2860.172000000002
+    },
+    {
+      "idx": 1710,
+      "time": 34705.9841,
+      "mid_price": 227.85840000000002,
+      "cum_gross": 2883.826500000003,
+      "cum_net_base": 2876.9825000000014,
+      "cum_gross_sniper": 2883.826500000003,
+      "cum_net_sniper": 2876.9825000000014
+    },
+    {
+      "idx": 1719,
+      "time": 34706.4861,
+      "mid_price": 227.13240000000002,
+      "cum_gross": 2905.0826000000025,
+      "cum_net_base": 2898.202600000002,
+      "cum_gross_sniper": 2905.0826000000025,
+      "cum_net_sniper": 2898.202600000002
+    },
+    {
+      "idx": 1728,
+      "time": 34706.9824,
+      "mid_price": 226.02070000000003,
+      "cum_gross": 2929.109800000002,
+      "cum_net_base": 2922.1938000000014,
+      "cum_gross_sniper": 2929.109800000002,
+      "cum_net_sniper": 2922.1938000000014
+    },
+    {
+      "idx": 1737,
+      "time": 34707.4303,
+      "mid_price": 225.02460000000002,
+      "cum_gross": 2948.399300000002,
+      "cum_net_base": 2941.447300000001,
+      "cum_gross_sniper": 2948.399300000002,
+      "cum_net_sniper": 2941.447300000001
+    },
+    {
+      "idx": 1746,
+      "time": 34707.8975,
+      "mid_price": 223.9561,
+      "cum_gross": 2966.200900000001,
+      "cum_net_base": 2959.212900000001,
+      "cum_gross_sniper": 2966.200900000001,
+      "cum_net_sniper": 2959.212900000001
+    },
+    {
+      "idx": 1755,
+      "time": 34708.1272,
+      "mid_price": 223.026,
+      "cum_gross": 2986.085900000001,
+      "cum_net_base": 2979.0619000000006,
+      "cum_gross_sniper": 2986.085900000001,
+      "cum_net_sniper": 2979.0619000000006
+    },
+    {
+      "idx": 1764,
+      "time": 34708.8765,
+      "mid_price": 222.0061,
+      "cum_gross": 3005.260400000001,
+      "cum_net_base": 2998.2004000000006,
+      "cum_gross_sniper": 3005.260400000001,
+      "cum_net_sniper": 2998.2004000000006
+    },
+    {
+      "idx": 1773,
+      "time": 34709.218,
+      "mid_price": 221.18560000000002,
+      "cum_gross": 3029.4745000000007,
+      "cum_net_base": 3022.3785000000003,
+      "cum_gross_sniper": 3029.4745000000007,
+      "cum_net_sniper": 3022.3785000000003
+    },
+    {
+      "idx": 1782,
+      "time": 34709.5543,
+      "mid_price": 220.41930000000002,
+      "cum_gross": 3048.8514000000005,
+      "cum_net_base": 3041.7194000000004,
+      "cum_gross_sniper": 3048.8514000000005,
+      "cum_net_sniper": 3041.7194000000004
+    },
+    {
+      "idx": 1791,
+      "time": 34710.2508,
+      "mid_price": 218.79180000000002,
+      "cum_gross": 3061.4396,
+      "cum_net_base": 3054.2716000000005,
+      "cum_gross_sniper": 3061.4396,
+      "cum_net_sniper": 3054.2716000000005
+    },
+    {
+      "idx": 1800,
+      "time": 34710.8245,
+      "mid_price": 218.0981,
+      "cum_gross": 3073.0479000000005,
+      "cum_net_base": 3065.8439000000008,
+      "cum_gross_sniper": 3073.0479000000005,
+      "cum_net_sniper": 3065.8439000000008
+    },
+    {
+      "idx": 1809,
+      "time": 34711.496,
+      "mid_price": 217.54540000000003,
+      "cum_gross": 3084.8788,
+      "cum_net_base": 3077.638800000001,
+      "cum_gross_sniper": 3084.8788,
+      "cum_net_sniper": 3077.638800000001
+    },
+    {
+      "idx": 1818,
+      "time": 34712.2005,
+      "mid_price": 217.3653,
+      "cum_gross": 3097.4526999999994,
+      "cum_net_base": 3090.176700000001,
+      "cum_gross_sniper": 3097.4526999999994,
+      "cum_net_sniper": 3090.176700000001
+    },
+    {
+      "idx": 1827,
+      "time": 34712.5492,
+      "mid_price": 216.36939999999998,
+      "cum_gross": 3116.518899999998,
+      "cum_net_base": 3109.2069000000006,
+      "cum_gross_sniper": 3116.518899999998,
+      "cum_net_sniper": 3109.2069000000006
+    },
+    {
+      "idx": 1836,
+      "time": 34713.2042,
+      "mid_price": 215.81580000000002,
+      "cum_gross": 3133.2243999999982,
+      "cum_net_base": 3125.876400000001,
+      "cum_gross_sniper": 3133.2243999999982,
+      "cum_net_sniper": 3125.876400000001
+    },
+    {
+      "idx": 1845,
+      "time": 34713.9495,
+      "mid_price": 214.17060000000004,
+      "cum_gross": 3147.4618999999984,
+      "cum_net_base": 3140.077900000001,
+      "cum_gross_sniper": 3147.4618999999984,
+      "cum_net_sniper": 3140.077900000001
+    },
+    {
+      "idx": 1854,
+      "time": 34714.3248,
+      "mid_price": 213.86240000000004,
+      "cum_gross": 3160.421899999999,
+      "cum_net_base": 3153.001900000001,
+      "cum_gross_sniper": 3160.421899999999,
+      "cum_net_sniper": 3153.001900000001
+    },
+    {
+      "idx": 1863,
+      "time": 34714.9347,
+      "mid_price": 213.25440000000003,
+      "cum_gross": 3167.501599999999,
+      "cum_net_base": 3160.0456000000013,
+      "cum_gross_sniper": 3167.501599999999,
+      "cum_net_sniper": 3160.0456000000013
+    },
+    {
+      "idx": 1872,
+      "time": 34715.2351,
+      "mid_price": 212.5437,
+      "cum_gross": 3171.669099999999,
+      "cum_net_base": 3164.1771000000012,
+      "cum_gross_sniper": 3171.669099999999,
+      "cum_net_sniper": 3164.1771000000012
+    },
+    {
+      "idx": 1881,
+      "time": 34715.7883,
+      "mid_price": 212.6472,
+      "cum_gross": 3178.4098999999987,
+      "cum_net_base": 3170.881900000001,
+      "cum_gross_sniper": 3178.4098999999987,
+      "cum_net_sniper": 3170.881900000001
+    },
+    {
+      "idx": 1890,
+      "time": 34716.3297,
+      "mid_price": 212.60770000000002,
+      "cum_gross": 3186.343499999999,
+      "cum_net_base": 3178.779500000001,
+      "cum_gross_sniper": 3186.343499999999,
+      "cum_net_sniper": 3178.779500000001
+    },
+    {
+      "idx": 1899,
+      "time": 34716.8514,
+      "mid_price": 211.8619,
+      "cum_gross": 3192.436099999999,
+      "cum_net_base": 3184.836100000002,
+      "cum_gross_sniper": 3192.436099999999,
+      "cum_net_sniper": 3184.836100000002
+    },
+    {
+      "idx": 1908,
+      "time": 34717.3562,
+      "mid_price": 211.52859999999998,
+      "cum_gross": 3196.4643999999994,
+      "cum_net_base": 3188.8284000000017,
+      "cum_gross_sniper": 3196.4643999999994,
+      "cum_net_sniper": 3188.8284000000017
+    },
+    {
+      "idx": 1917,
+      "time": 34717.7955,
+      "mid_price": 211.4216,
+      "cum_gross": 3203.2850999999996,
+      "cum_net_base": 3195.6131000000023,
+      "cum_gross_sniper": 3203.2850999999996,
+      "cum_net_sniper": 3195.6131000000023
+    },
+    {
+      "idx": 1926,
+      "time": 34718.1274,
+      "mid_price": 212.09050000000002,
+      "cum_gross": 3207.024699999999,
+      "cum_net_base": 3199.3167000000026,
+      "cum_gross_sniper": 3207.024699999999,
+      "cum_net_sniper": 3199.3167000000026
+    },
+    {
+      "idx": 1935,
+      "time": 34718.6393,
+      "mid_price": 212.12369999999999,
+      "cum_gross": 3216.203699999999,
+      "cum_net_base": 3208.4597000000026,
+      "cum_gross_sniper": 3216.203699999999,
+      "cum_net_sniper": 3208.4597000000026
+    },
+    {
+      "idx": 1944,
+      "time": 34719.3108,
+      "mid_price": 211.60720000000003,
+      "cum_gross": 3220.9764999999998,
+      "cum_net_base": 3213.1965000000027,
+      "cum_gross_sniper": 3220.9764999999998,
+      "cum_net_sniper": 3213.1965000000027
+    },
+    {
+      "idx": 1953,
+      "time": 34720.4319,
+      "mid_price": 210.9663,
+      "cum_gross": 3224.8756999999996,
+      "cum_net_base": 3217.059700000002,
+      "cum_gross_sniper": 3224.8756999999996,
+      "cum_net_sniper": 3217.059700000002
+    },
+    {
+      "idx": 1962,
+      "time": 34720.8208,
+      "mid_price": 210.8016,
+      "cum_gross": 3228.4697999999994,
+      "cum_net_base": 3220.617800000002,
+      "cum_gross_sniper": 3228.4697999999994,
+      "cum_net_sniper": 3220.617800000002
+    },
+    {
+      "idx": 1971,
+      "time": 34721.1291,
+      "mid_price": 210.81490000000002,
+      "cum_gross": 3231.2574999999997,
+      "cum_net_base": 3223.3695000000016,
+      "cum_gross_sniper": 3231.2574999999997,
+      "cum_net_sniper": 3223.3695000000016
+    },
+    {
+      "idx": 1980,
+      "time": 34721.8247,
+      "mid_price": 210.94170000000003,
+      "cum_gross": 3233.2915999999996,
+      "cum_net_base": 3225.367600000001,
+      "cum_gross_sniper": 3233.2915999999996,
+      "cum_net_sniper": 3225.367600000001
+    },
+    {
+      "idx": 1989,
+      "time": 34722.0438,
+      "mid_price": 211.13400000000001,
+      "cum_gross": 3240.8831999999993,
+      "cum_net_base": 3232.923200000001,
+      "cum_gross_sniper": 3240.8831999999993,
+      "cum_net_sniper": 3232.923200000001
+    }
+  ],
+  "trade_logs": [
+    {
+      "time": 34720.886,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.12690000000003,
+      "future_price": 210.6374,
+      "gross_pnl": 0.4895000000000209,
+      "net_pnl": 0.4855000000000209
+    },
+    {
+      "time": 34720.9025,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.15550000000002,
+      "future_price": 210.74880000000002,
+      "gross_pnl": 0.4067000000000007,
+      "net_pnl": 0.4027000000000007
+    },
+    {
+      "time": 34720.9255,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.98590000000002,
+      "future_price": 210.8848,
+      "gross_pnl": 0.10110000000000241,
+      "net_pnl": 0.0971000000000024
+    },
+    {
+      "time": 34721.0677,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.8098,
+      "future_price": 210.9756,
+      "gross_pnl": 0.16579999999999018,
+      "net_pnl": 0.16179999999999017
+    },
+    {
+      "time": 34721.0824,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.84910000000002,
+      "future_price": 211.2308,
+      "gross_pnl": 0.3816999999999666,
+      "net_pnl": 0.3776999999999666
+    },
+    {
+      "time": 34721.0884,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.94350000000003,
+      "future_price": 211.13400000000001,
+      "gross_pnl": 0.1904999999999859,
+      "net_pnl": 0.1864999999999859
+    },
+    {
+      "time": 34721.093,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 211.0018,
+      "future_price": 211.412,
+      "gross_pnl": 0.41020000000000323,
+      "net_pnl": 0.4062000000000032
+    },
+    {
+      "time": 34721.1291,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.81490000000002,
+      "future_price": 211.2502,
+      "gross_pnl": 0.4352999999999838,
+      "net_pnl": 0.4312999999999838
+    },
+    {
+      "time": 34721.1815,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.9176,
+      "future_price": 211.08500000000004,
+      "gross_pnl": 0.1674000000000433,
+      "net_pnl": 0.1634000000000433
+    },
+    {
+      "time": 34721.2023,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.9729,
+      "future_price": 210.77429999999998,
+      "gross_pnl": 0.19860000000002742,
+      "net_pnl": 0.19460000000002742
+    },
+    {
+      "time": 34721.2619,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.776,
+      "future_price": 210.69580000000002,
+      "gross_pnl": 0.08019999999999072,
+      "net_pnl": 0.07619999999999072
+    },
+    {
+      "time": 34721.266,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.64300000000003,
+      "future_price": 210.613,
+      "gross_pnl": -0.03000000000002956,
+      "net_pnl": -0.03400000000002956
+    },
+    {
+      "time": 34721.3644,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.7486,
+      "future_price": 210.6941,
+      "gross_pnl": 0.054500000000018645,
+      "net_pnl": 0.05050000000001864
+    },
+    {
+      "time": 34721.4502,
+      "direction": "BUY (LONG)",
+      "signal": 1,
+      "mid_price": 210.69400000000002,
+      "future_price": 210.738,
+      "gross_pnl": 0.04399999999998272,
+      "net_pnl": 0.039999999999982716
+    },
+    {
+      "time": 34721.6629,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.94740000000002,
+      "future_price": 210.5353,
+      "gross_pnl": 0.41210000000000946,
+      "net_pnl": 0.40810000000000946
+    },
+    {
+      "time": 34721.8017,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.0277,
+      "future_price": 210.46280000000002,
+      "gross_pnl": 0.5648999999999944,
+      "net_pnl": 0.5608999999999944
+    },
+    {
+      "time": 34721.8247,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.94170000000003,
+      "future_price": 210.39929999999998,
+      "gross_pnl": 0.5424000000000433,
+      "net_pnl": 0.5384000000000433
+    },
+    {
+      "time": 34721.8512,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.92150000000004,
+      "future_price": 210.10500000000002,
+      "gross_pnl": 0.8165000000000191,
+      "net_pnl": 0.8125000000000191
+    },
+    {
+      "time": 34721.9207,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.9241,
+      "future_price": 209.94010000000003,
+      "gross_pnl": 0.9839999999999804,
+      "net_pnl": 0.9799999999999804
+    },
+    {
+      "time": 34721.9289,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.79860000000002,
+      "future_price": 209.8109,
+      "gross_pnl": 0.987700000000018,
+      "net_pnl": 0.983700000000018
+    },
+    {
+      "time": 34721.9488,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.6374,
+      "future_price": 210.0573,
+      "gross_pnl": 0.5801000000000158,
+      "net_pnl": 0.5761000000000158
+    },
+    {
+      "time": 34721.9561,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.74880000000002,
+      "future_price": 210.08550000000002,
+      "gross_pnl": 0.6632999999999925,
+      "net_pnl": 0.6592999999999924
+    },
+    {
+      "time": 34721.9874,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.8848,
+      "future_price": 210.19830000000002,
+      "gross_pnl": 0.6864999999999952,
+      "net_pnl": 0.6824999999999952
+    },
+    {
+      "time": 34722.0285,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.9756,
+      "future_price": 209.9482,
+      "gross_pnl": 1.0273999999999717,
+      "net_pnl": 1.0233999999999717
+    },
+    {
+      "time": 34722.0414,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.2308,
+      "future_price": 210.1511,
+      "gross_pnl": 1.0796999999999741,
+      "net_pnl": 1.0756999999999741
+    },
+    {
+      "time": 34722.0438,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.13400000000001,
+      "future_price": 210.3676,
+      "gross_pnl": 0.7664000000000044,
+      "net_pnl": 0.7624000000000044
+    },
+    {
+      "time": 34722.1083,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.412,
+      "future_price": 210.0346,
+      "gross_pnl": 1.3773999999999944,
+      "net_pnl": 1.3733999999999944
+    },
+    {
+      "time": 34722.1103,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.2502,
+      "future_price": 209.91950000000003,
+      "gross_pnl": 1.330699999999979,
+      "net_pnl": 1.326699999999979
+    },
+    {
+      "time": 34722.2926,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 211.08500000000004,
+      "future_price": 210.0116,
+      "gross_pnl": 1.0734000000000492,
+      "net_pnl": 1.0694000000000492
+    },
+    {
+      "time": 34722.3062,
+      "direction": "SELL (SHORT)",
+      "signal": -1,
+      "mid_price": 210.77429999999998,
+      "future_price": 210.1191,
+      "gross_pnl": 0.6551999999999794,
+      "net_pnl": 0.6511999999999794
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Strictly enforce Brand Guidelines: 0px border-radius globally */
+* {
+  border-radius: 0px !important;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+}
+
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+  letter-spacing: 0.03em;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars in Terminal Brutalist aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid #333333;
+}
+::-webkit-scrollbar-thumb {
+  background: #77DD77;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #61D095;
+}
+
+/* Hard Block Shadows per Brand Guidelines */
+.shadow-brutal {
+  box-shadow: 4px 4px 0px #77DD77;
+}
+.shadow-brutal-sm {
+  box-shadow: 2px 2px 0px #77DD77;
+}
+.shadow-brutal-dark {
+  box-shadow: 4px 4px 0px #38A368;
+}
+
+/* Button UI Components strictly per brand guidelines */
+.btn-primary {
+  background-color: #77DD77;
+  color: #000000;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 2px solid #77DD77;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn-primary:hover {
+  background-color: #000000;
+  color: #77DD77;
+  border: 2px solid #77DD77;
+  box-shadow: 3px 3px 0px #77DD77;
+}
+
+.btn-secondary {
+  background-color: #000000;
+  color: #77DD77;
+  font-weight: 700;
+  padding: 10px 20px;
+  border: 2px solid #77DD77;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn-secondary:hover {
+  background-color: #77DD77;
+  color: #000000;
+  box-shadow: 3px 3px 0px #77DD77;
+}
+
+/* Input elements strictly per brand guidelines */
+.input-brutal {
+  background-color: #000000;
+  color: #77DD77;
+  border: 1px solid #555555;
+  padding: 10px 14px;
+  outline: none;
+}
+.input-brutal:focus {
+  border: 2px solid #77DD77;
+  box-shadow: 2px 2px 0px #77DD77;
+}
+
+/* Card Containers per brand guidelines */
+.card-brutal {
+  background-color: #000000;
+  border: 1px solid #77DD77;
+  padding: 24px;
+  position: relative;
+}
+
+.card-brutal-muted {
+  background-color: #050505;
+  border: 1px solid #333333;
+  padding: 24px;
+}
+
+/* Glowing text and terminal accents */
+.text-pastel {
+  color: #77DD77;
+}
+.text-muted-gray {
+  color: #A0A0A0;
+}
+.border-pastel {
+  border-color: #77DD77;
+}
