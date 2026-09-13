@@ -14,9 +14,10 @@ def run_cmd(cmd):
     res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     return res.stdout.strip(), res.stderr.strip(), res.returncode
 
-def commit_phase(message):
-    """Utility to git add and git commit with exact conventional commit message."""
-    run_cmd("git add -A")
+def commit_files(files, message):
+    """Utility to git add specific files and commit with conventional message."""
+    files_str = " ".join(files)
+    run_cmd(f"git add {files_str}")
     out, err, code = run_cmd(f'git commit -m "{message}"')
     if code == 0:
         print(f"[GIT COMMIT SUCCESS] {message}")
@@ -35,17 +36,17 @@ def main():
 
     # Step 1: Phase 1
     p1_df = run_phase_1(input_csv="data/AAPL_LOBSTER.csv", output_parquet="data/AAPL_engineered_features.parquet")
-    commit_phase("feat(data): engineer tick-time features and export to parquet")
+    commit_files(["generate_lobster_data.py", "phase1.py", "data/AAPL_engineered_features.parquet"], "feat(data): engineer tick-time features and export to parquet")
     print("-" * 75)
 
     # Step 2: Phase 2
     p2_out = run_phase_2(parquet_path="data/AAPL_engineered_features.parquet")
-    commit_phase("feat(model): calculate time-series deltas and train v2 random forest")
+    commit_files(["phase2.py"], "feat(model): calculate time-series deltas and train v2 random forest")
     print("-" * 75)
 
     # Step 3: Phase 3
     p3_out = run_phase_3(p2_out, threshold=0.50, friction_per_trade=0.004)
-    commit_phase("feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl")
+    commit_files(["phase3.py", "run_pipeline.py"], "feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl")
     print("-" * 75)
 
     # Step 4: Export JSON summary for Frontend Web UI
