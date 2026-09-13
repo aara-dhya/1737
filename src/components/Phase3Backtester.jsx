@@ -34,6 +34,16 @@ export default function Phase3Backtester({ backtestMetrics, pnlSeries, tradeLogs
     return `[ ${track.join('')} ]`;
   };
 
+  // Render ASCII progress bar (e.g. [██████████░░░░░░░░░░])
+  const renderAsciiBar = (percentage, width = 20) => {
+    const validPct = isNaN(percentage) ? 0 : Math.max(0, Math.min(1, percentage));
+    const filledLength = Math.round(width * validPct);
+    const emptyLength = width - filledLength;
+    const filled = '█'.repeat(filledLength);
+    const empty = '░'.repeat(emptyLength);
+    return `[${filled}${empty}]`;
+  };
+
   return (
     <div className="space-y-4 font-mono text-xs">
       {/* Top Banner Frame */}
