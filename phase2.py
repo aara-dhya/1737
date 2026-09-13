@@ -69,7 +69,7 @@ def run_phase_2(parquet_path="data/AAPL_engineered_features.parquet"):
     target_names = ["Down (-1)", "Flat (0)", "Up (1)"]
     labels = [-1, 0, 1]
     print("\n--- Classification Report (Afternoon Test Set) ---")
-    report_str = classification_report(y_test, y_pred, labels=labels, target_names=target_names)
+    report_str = classification_report(y_test, y_pred, labels=labels, target_names=target_names, zero_division=0)
     print(report_str)
 
     # Feature Importances Extraction
