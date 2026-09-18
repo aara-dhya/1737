@@ -12,27 +12,27 @@ export const ThemeProvider = ({ children }) => {
 
   const isDark = mode === 'dark';
 
-  // Exact hex theme tokens
+  // Exact hex theme tokens: Dark mode uses soft pastel green #77DD77
   const theme = isDark
     ? {
         mode: 'dark',
         bg: 'bg-[#000000]',
         bgHex: '#000000',
-        text: 'text-[#39FF14]',
-        textHex: '#39FF14',
-        textMuted: 'text-[#00CC00]',
-        textMutedHex: '#00CC00',
-        border: 'border-[#39FF14]',
-        borderHex: '#39FF14',
-        borderMuted: 'border-[#005500]',
-        headerBg: 'bg-[#39FF14]',
+        text: 'text-[#77DD77]',
+        textHex: '#77DD77',
+        textMuted: 'text-[#61D095]',
+        textMutedHex: '#61D095',
+        border: 'border-[#77DD77]',
+        borderHex: '#77DD77',
+        borderMuted: 'border-[#38A368]',
+        headerBg: 'bg-[#77DD77]',
         headerText: 'text-[#000000]',
-        boxBg: 'bg-[#001100]',
-        boxBgHex: '#001100',
-        hoverRow: 'hover:bg-[#39FF14] hover:text-[#000000]',
-        btnClass: 'bg-[#000000] text-[#39FF14] border-[#39FF14] hover:bg-[#39FF14] hover:text-[#000000]',
-        btnActive: 'bg-[#39FF14] text-[#000000]',
-        accentHex: '#39FF14',
+        boxBg: 'bg-[#0A0A0A]',
+        boxBgHex: '#0A0A0A',
+        hoverRow: 'hover:bg-[#77DD77] hover:text-[#000000]',
+        btnClass: 'bg-[#000000] text-[#77DD77] border-[#77DD77] hover:bg-[#77DD77] hover:text-[#000000]',
+        btnActive: 'bg-[#77DD77] text-[#000000]',
+        accentHex: '#77DD77',
       }
     : {
         mode: 'light',
