@@ -12,9 +12,9 @@ export default function App() {
   const [pipelineData, setPipelineData] = useState(initialData);
 
   return (
-    <div className="h-screen w-screen bg-black text-green-400 font-mono flex flex-col overflow-hidden p-2 select-none border-2 border-green-400">
+    <div className="h-screen w-screen bg-[#FCEDF2] text-[#B984DF] font-mono flex flex-col overflow-hidden p-2 select-none border-2 border-[#B984DF]">
       {/* Top ncurses Title & System Telemetry Header */}
-      <header className="bg-green-400 text-black px-3 py-1 font-bold flex flex-col md:flex-row justify-between items-start md:items-center text-xs uppercase shrink-0">
+      <header className="bg-[#B984DF] text-[#FCEDF2] px-3 py-1 font-bold flex flex-col md:flex-row justify-between items-start md:items-center text-xs uppercase shrink-0">
         <div className="flex items-center space-x-2 font-extrabold text-sm">
           <span>┌─[ ncurses v5.9 ]</span>
           <span>QUANT TERMINAL :: HFT ML PIPELINE</span>
@@ -28,11 +28,11 @@ export default function App() {
       </header>
 
       {/* Function Keys Navigation Bar ([F1: DATA], [F2: MODEL], [F3: BACKTEST], [F4: LOGS]) */}
-      <nav className="bg-black border-b border-green-400 py-1.5 px-2 flex space-x-2 shrink-0 overflow-x-auto">
+      <nav className="bg-[#FCEDF2] border-b border-[#B984DF] py-1.5 px-2 flex space-x-2 shrink-0 overflow-x-auto">
         <button
           onClick={() => setActiveTab('phase1')}
           className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase1' ? 'bg-green-400 text-black' : 'text-green-400'
+            activeTab === 'phase1' ? 'bg-[#B984DF] text-[#FCEDF2]' : 'text-[#B984DF]'
           }`}
         >
           [ F1: DATA / FEATURE ENG ]
@@ -41,7 +41,7 @@ export default function App() {
         <button
           onClick={() => setActiveTab('phase2')}
           className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase2' ? 'bg-green-400 text-black' : 'text-green-400'
+            activeTab === 'phase2' ? 'bg-[#B984DF] text-[#FCEDF2]' : 'text-[#B984DF]'
           }`}
         >
           [ F2: MODEL TRAIN / DELTAS ]
@@ -50,7 +50,7 @@ export default function App() {
         <button
           onClick={() => setActiveTab('phase3')}
           className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase3' ? 'bg-green-400 text-black' : 'text-green-400'
+            activeTab === 'phase3' ? 'bg-[#B984DF] text-[#FCEDF2]' : 'text-[#B984DF]'
           }`}
         >
           [ F3: BACKTEST & SNIPER ]
@@ -59,7 +59,7 @@ export default function App() {
         <button
           onClick={() => setActiveTab('terminal')}
           className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'terminal' ? 'bg-green-400 text-black' : 'text-green-400'
+            activeTab === 'terminal' ? 'bg-[#B984DF] text-[#FCEDF2]' : 'text-[#B984DF]'
           }`}
         >
           [ F4: LIVE TERMINAL ]
@@ -67,7 +67,7 @@ export default function App() {
       </nav>
 
       {/* Main Viewport Content Area */}
-      <main className="flex-1 overflow-auto p-2 bg-black">
+      <main className="flex-1 overflow-auto p-2 bg-[#FCEDF2]">
         {activeTab === 'phase1' && (
           <Phase1Viewer datasetSummary={pipelineData?.dataset_summary} />
         )}
@@ -94,12 +94,12 @@ export default function App() {
       </main>
 
       {/* Bottom ncurses Status Bar */}
-      <footer className="bg-green-400 text-black px-2 py-0.5 font-bold flex justify-between items-center text-[11px] uppercase shrink-0">
+      <footer className="bg-[#B984DF] text-[#FCEDF2] px-2 py-0.5 font-bold flex justify-between items-center text-[11px] uppercase shrink-0">
         <div>
           &lt;F1&gt; DATA &bull; &lt;F2&gt; MODEL &bull; &lt;F3&gt; BACKTEST &bull; &lt;F4&gt; SHELL &bull; &lt;F10&gt; QUIT
         </div>
         <div className="font-mono text-[10px]">
-          [ TWO-TONE VGA 80x24 TUI DISPLAY ]
+          [ STRICT LIGHT MODE PALETTE TUI DISPLAY ]
         </div>
       </footer>
     </div>

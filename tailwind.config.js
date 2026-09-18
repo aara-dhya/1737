@@ -7,14 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        black: '#000000',
-        green: {
-          400: '#39FF14',
-          500: '#00FF00',
-          600: '#00CC00',
-          800: '#005500',
-          900: '#002200',
-          950: '#001100',
+        palette: {
+          purpleDeep: '#B984DF',
+          purpleSoft: '#C095E4',
+          pinkLightest: '#FCEDF2',
+          pinkLight: '#FFD1D4',
+          pinkMid: '#FFB7C5',
+          pinkVibrant: '#FFA0C5',
         }
       },
       fontFamily: {

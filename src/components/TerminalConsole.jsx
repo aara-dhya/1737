@@ -37,15 +37,15 @@ export default function TerminalConsole({ onRunPipeline }) {
   };
 
   return (
-    <div className="space-y-4 font-mono text-xs">
+    <div className="space-y-4 font-mono text-xs text-[#B984DF]">
       {/* Top Banner Frame */}
       <NcursesFrame title="LIVE PYTHON PIPELINE TERMINAL CONSOLE" headerExtra="SHELL: [ BASH ]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
           <div>
-            <div className="text-green-400 font-bold">
+            <div className="text-[#B984DF] font-bold">
               EXECUTE PYTHON CORE SCRIPTS (`phase1.py`, `phase2.py`, `phase3.py`)
             </div>
-            <div className="text-green-600 text-[11px]">
+            <div className="text-[#C095E4] text-[11px]">
               TRIGGERS POLARS DATA PROCESSING, MODEL RE-TRAINING, AND GIT CONVENTIONAL COMMITS
             </div>
           </div>
@@ -62,15 +62,15 @@ export default function TerminalConsole({ onRunPipeline }) {
 
       {/* Terminal Screen Box */}
       <NcursesFrame title="TERMINAL STDOUT / STDERR LOG MONITOR">
-        <div className="border border-green-400 bg-black p-3 text-xs font-mono space-y-1 min-h-[280px] overflow-y-auto">
+        <div className="border border-[#C095E4] bg-[#FFD1D4] p-3 text-xs font-mono space-y-1 min-h-[280px] overflow-y-auto">
           {logs.map((log, idx) => (
-            <div key={idx} className={log.includes("Commit:") ? "font-bold text-green-400" : log.includes(">>>") ? "text-yellow-400 font-bold" : "text-green-500"}>
+            <div key={idx} className={log.includes("Commit:") ? "font-bold text-[#B984DF]" : log.includes(">>>") ? "text-[#FFA0C5] font-bold" : "text-[#C095E4]"}>
               {log}
             </div>
           ))}
-          <div className="text-green-400 font-bold pt-2 flex items-center">
+          <div className="text-[#B984DF] font-bold pt-2 flex items-center">
             <span>sysadmin@quant-tui:~# </span>
-            <span className="w-2.5 h-4 bg-green-400 ml-1 inline-block animate-cursor"></span>
+            <span className="w-2.5 h-4 bg-[#B984DF] ml-1 inline-block animate-cursor"></span>
           </div>
         </div>
       </NcursesFrame>
@@ -78,17 +78,17 @@ export default function TerminalConsole({ onRunPipeline }) {
       {/* Conventional Commit Log */}
       <NcursesFrame title="CONVENTIONAL COMMIT HISTORY LOG">
         <div className="space-y-1 font-mono text-xs">
-          <div className="border border-green-800 p-1.5 flex justify-between items-center">
-            <span className="font-bold text-green-400">feat(data): engineer tick-time features and export to parquet</span>
-            <span className="text-green-600">[ PHASE 1 ]</span>
+          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
+            <span className="font-bold text-[#B984DF]">feat(data): engineer tick-time features and export to parquet</span>
+            <span className="text-[#C095E4]">[ PHASE 1 ]</span>
           </div>
-          <div className="border border-green-800 p-1.5 flex justify-between items-center">
-            <span className="font-bold text-green-400">feat(model): calculate time-series deltas and train v2 random forest</span>
-            <span className="text-green-600">[ PHASE 2 ]</span>
+          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
+            <span className="font-bold text-[#B984DF]">feat(model): calculate time-series deltas and train v2 random forest</span>
+            <span className="text-[#C095E4]">[ PHASE 2 ]</span>
           </div>
-          <div className="border border-green-800 p-1.5 flex justify-between items-center">
-            <span className="font-bold text-green-400">feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
-            <span className="text-green-600">[ PHASE 3 ]</span>
+          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
+            <span className="font-bold text-[#B984DF]">feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
+            <span className="text-[#C095E4]">[ PHASE 3 ]</span>
           </div>
         </div>
       </NcursesFrame>
