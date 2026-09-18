@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import NcursesFrame from './NcursesFrame';
+import { useTheme } from '../context/ThemeContext';
 
 export default function TerminalConsole({ onRunPipeline }) {
+  const { theme } = useTheme();
   const [running, setRunning] = useState(false);
   const [logs, setLogs] = useState([
     "=== INSTITUTIONAL HIGH-FREQUENCY TRADING (HFT) MACHINE LEARNING PIPELINE ===",
@@ -37,15 +39,15 @@ export default function TerminalConsole({ onRunPipeline }) {
   };
 
   return (
-    <div className="space-y-4 font-mono text-xs text-[#B984DF]">
+    <div className={`space-y-4 font-mono text-xs ${theme.text}`}>
       {/* Top Banner Frame */}
       <NcursesFrame title="LIVE PYTHON PIPELINE TERMINAL CONSOLE" headerExtra="SHELL: [ BASH ]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
           <div>
-            <div className="text-[#B984DF] font-bold">
+            <div className={`${theme.text} font-bold`}>
               EXECUTE PYTHON CORE SCRIPTS (`phase1.py`, `phase2.py`, `phase3.py`)
             </div>
-            <div className="text-[#C095E4] text-[11px]">
+            <div className={`${theme.textMuted} text-[11px]`}>
               TRIGGERS POLARS DATA PROCESSING, MODEL RE-TRAINING, AND GIT CONVENTIONAL COMMITS
             </div>
           </div>
@@ -53,7 +55,7 @@ export default function TerminalConsole({ onRunPipeline }) {
           <button 
             onClick={handleRun} 
             disabled={running}
-            className="ncurses-btn text-xs font-bold"
+            className={`ncurses-btn text-xs font-bold ${theme.btnClass}`}
           >
             {running ? '[ EXECUTING... ]' : '[ RUN PIPELINE NOW ]'}
           </button>
@@ -62,15 +64,15 @@ export default function TerminalConsole({ onRunPipeline }) {
 
       {/* Terminal Screen Box */}
       <NcursesFrame title="TERMINAL STDOUT / STDERR LOG MONITOR">
-        <div className="border border-[#C095E4] bg-[#FFD1D4] p-3 text-xs font-mono space-y-1 min-h-[280px] overflow-y-auto">
+        <div className={`border ${theme.borderMuted} ${theme.boxBg} p-3 text-xs font-mono space-y-1 min-h-[280px] overflow-y-auto`}>
           {logs.map((log, idx) => (
-            <div key={idx} className={log.includes("Commit:") ? "font-bold text-[#B984DF]" : log.includes(">>>") ? "text-[#FFA0C5] font-bold" : "text-[#C095E4]"}>
+            <div key={idx} className={log.includes("Commit:") ? `font-bold ${theme.text}` : log.includes(">>>") ? `font-bold ${theme.text}` : theme.textMuted}>
               {log}
             </div>
           ))}
-          <div className="text-[#B984DF] font-bold pt-2 flex items-center">
+          <div className={`${theme.text} font-bold pt-2 flex items-center`}>
             <span>sysadmin@quant-tui:~# </span>
-            <span className="w-2.5 h-4 bg-[#B984DF] ml-1 inline-block animate-cursor"></span>
+            <span className={`w-2.5 h-4 ${theme.headerBg} ml-1 inline-block animate-cursor`}></span>
           </div>
         </div>
       </NcursesFrame>
@@ -78,17 +80,17 @@ export default function TerminalConsole({ onRunPipeline }) {
       {/* Conventional Commit Log */}
       <NcursesFrame title="CONVENTIONAL COMMIT HISTORY LOG">
         <div className="space-y-1 font-mono text-xs">
-          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
-            <span className="font-bold text-[#B984DF]">feat(data): engineer tick-time features and export to parquet</span>
-            <span className="text-[#C095E4]">[ PHASE 1 ]</span>
+          <div className={`border ${theme.borderMuted} p-1.5 flex justify-between items-center ${theme.bg}`}>
+            <span className={`font-bold ${theme.text}`}>feat(data): engineer tick-time features and export to parquet</span>
+            <span className={theme.textMuted}>[ PHASE 1 ]</span>
           </div>
-          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
-            <span className="font-bold text-[#B984DF]">feat(model): calculate time-series deltas and train v2 random forest</span>
-            <span className="text-[#C095E4]">[ PHASE 2 ]</span>
+          <div className={`border ${theme.borderMuted} p-1.5 flex justify-between items-center ${theme.bg}`}>
+            <span className={`font-bold ${theme.text}`}>feat(model): calculate time-series deltas and train v2 random forest</span>
+            <span className={theme.textMuted}>[ PHASE 2 ]</span>
           </div>
-          <div className="border border-[#FFB7C5] p-1.5 flex justify-between items-center bg-[#FCEDF2]">
-            <span className="font-bold text-[#B984DF]">feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
-            <span className="text-[#C095E4]">[ PHASE 3 ]</span>
+          <div className={`border ${theme.borderMuted} p-1.5 flex justify-between items-center ${theme.bg}`}>
+            <span className={`font-bold ${theme.text}`}>feat(backtest): implement probability thresholds to filter low-confidence trades and achieve positive net pnl</span>
+            <span className={theme.textMuted}>[ PHASE 3 ]</span>
           </div>
         </div>
       </NcursesFrame>
