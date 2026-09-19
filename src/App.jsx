@@ -54,7 +54,7 @@ export default function App() {
         <nav className={`${theme.bg} border-b ${theme.border} py-1.5 px-2 flex space-x-2 shrink-0 overflow-x-auto`}>
           <button
             onClick={() => navigate('/home/setup')}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'setup' ? theme.btnActive : theme.text}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'setup' ? theme.btnActive : theme.btnClass}`}
           >
             [ F0: SETUP ]
           </button>
@@ -62,7 +62,7 @@ export default function App() {
           <button
             onClick={() => navigate('/home/data')}
             disabled={!pipelineData}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'data' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'data' ? theme.btnActive : theme.btnClass} ${!pipelineData ? 'opacity-50' : ''}`}
           >
             [ F1: DATA ]
           </button>
@@ -70,7 +70,7 @@ export default function App() {
           <button
             onClick={() => navigate('/home/model')}
             disabled={!pipelineData}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'model' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'model' ? theme.btnActive : theme.btnClass} ${!pipelineData ? 'opacity-50' : ''}`}
           >
             [ F2: MODEL ]
           </button>
@@ -78,7 +78,7 @@ export default function App() {
           <button
             onClick={() => navigate('/home/backtest')}
             disabled={!pipelineData}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'backtest' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'backtest' ? theme.btnActive : theme.btnClass} ${!pipelineData ? 'opacity-50' : ''}`}
           >
             [ F3: BACKTEST ]
           </button>
@@ -86,14 +86,14 @@ export default function App() {
           <button
             onClick={() => navigate('/home/live')}
             disabled={!pipelineData}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'live' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'live' ? theme.btnActive : theme.btnClass} ${!pipelineData ? 'opacity-50' : ''}`}
           >
             [ F4: LIVE TRADING ]
           </button>
 
           <button
             onClick={() => navigate('/home/terminal')}
-            className={`ncurses-btn text-xs font-bold ${activeTab === 'terminal' ? theme.btnActive : theme.text}`}
+            className={`ncurses-btn text-xs font-bold ${activeTab === 'terminal' ? theme.btnActive : theme.btnClass}`}
           >
             [ F5: TERMINAL ]
           </button>

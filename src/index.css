@@ -15,8 +15,6 @@
 }
 
 body, html {
-  background-color: #FCEDF2 !important;
-  color: #B984DF !important;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -52,13 +50,12 @@ body, html {
   background: #B984DF;
 }
 
-/* Light Mode ncurses Bracket Button Styling using strict palette */
+/* Structural styling for ncurses buttons (colors managed by ThemeContext) */
 .ncurses-btn {
-  background-color: #FCEDF2;
-  color: #B984DF;
   font-weight: 700;
   padding: 2px 10px;
-  border: 1px solid #C095E4;
+  border-width: 1px;
+  border-style: solid;
   cursor: pointer;
   text-transform: uppercase;
   display: inline-flex;
@@ -67,47 +64,21 @@ body, html {
   transition: all 0.1s ease;
 }
 .ncurses-btn:hover, .ncurses-btn:focus {
-  background-color: #B984DF !important;
-  color: #FCEDF2 !important;
-  border-color: #B984DF !important;
   outline: none;
 }
-.ncurses-btn:active {
-  background-color: #FFA0C5 !important;
-  color: #FCEDF2 !important;
-  border-color: #FFA0C5 !important;
-}
 .ncurses-btn:disabled {
-  background-color: #FFD1D4 !important;
-  color: #C095E4 !important;
-  border-color: #FFB7C5 !important;
   cursor: not-allowed;
+  opacity: 0.5;
 }
 
-/* Color Inversion utilities */
-.hover-invert:hover {
-  background-color: #B984DF !important;
-  color: #FCEDF2 !important;
-}
 
-.active-invert {
-  background-color: #B984DF !important;
-  color: #FCEDF2 !important;
-}
 
-/* Light Mode Terminal input block */
+/* Terminal input block */
 .ncurses-input {
-  background-color: #FCEDF2;
-  color: #B984DF;
-  border: 1px solid #C095E4;
+  border-width: 1px;
+  border-style: solid;
   padding: 4px 8px;
   outline: none;
   font-family: 'IBM Plex Mono', monospace;
-}
-.ncurses-input::placeholder {
-  color: #C095E4;
-}
-.ncurses-input:focus {
-  background-color: #FFD1D4;
-  border: 1px solid #B984DF;
+  background: transparent;
 }
