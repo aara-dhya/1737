@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function ConfigDashboard({ onRunPipeline }) {
   const { theme, mode } = useTheme();
@@ -11,6 +12,8 @@ export default function ConfigDashboard({ onRunPipeline }) {
   const [estimators, setEstimators] = useState(50);
   const [apiKey, setApiKey] = useState('sk_quant_12345');
   const [loading, setLoading] = useState(false);
+
+  usePageTitle('Setup');
 
   const handleRun = () => {
     setLoading(true);
@@ -94,7 +97,7 @@ export default function ConfigDashboard({ onRunPipeline }) {
           </div>
         </div>
 
-        <div className="mt-6 border-t border-dashed border-gray-500 pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className={`mt-6 border-t border-dashed ${theme.borderMuted} pt-4 flex flex-col md:flex-row justify-between items-center gap-4`}>
           <div className={`text-[11px] ${theme.textMuted}`}>
             Ensure all API limits are respected before initializing Celery worker.
           </div>

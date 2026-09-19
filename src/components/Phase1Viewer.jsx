@@ -1,9 +1,11 @@
 import React from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Phase1Viewer({ datasetSummary }) {
   const { theme } = useTheme();
+  usePageTitle('Data Viewer');
 
   const sampleLOBRows = [
     { time: 34200.012, raw_ask_1: 1750500, ask_1: 175.05, raw_bid_1: 1750300, bid_1: 175.03, spread: 0.02, micro: 175.041, imbalance: 0.25, deep_imbalance: 0.18, target: 1 },

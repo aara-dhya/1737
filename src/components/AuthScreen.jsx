@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function AuthScreen({ onLogin }) {
   const { theme, mode } = useTheme();
@@ -8,6 +9,8 @@ export default function AuthScreen({ onLogin }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  usePageTitle('Login');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,7 +63,7 @@ export default function AuthScreen({ onLogin }) {
             </div>
 
             {error && (
-              <div className="text-red-500 font-bold text-xs text-center animate-pulse">
+              <div style={{ color: theme.accentHex }} className="font-bold text-xs text-center animate-pulse">
                 {error}
               </div>
             )}

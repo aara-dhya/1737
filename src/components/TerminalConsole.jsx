@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function TerminalConsole({ onRunPipeline }) {
   const { theme } = useTheme();
+  usePageTitle('Live Terminal');
   const [running, setRunning] = useState(false);
   const [logs, setLogs] = useState([
     "=== INSTITUTIONAL HIGH-FREQUENCY TRADING (HFT) MACHINE LEARNING PIPELINE ===",

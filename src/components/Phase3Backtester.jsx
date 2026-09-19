@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Phase3Backtester({ backtestMetrics, pnlSeries, tradeLogs }) {
   const { theme } = useTheme();
+  usePageTitle('Backtest Results');
   const [threshold, setThreshold] = useState(0.50);
 
   const metrics = backtestMetrics || {

@@ -1,9 +1,11 @@
 import React from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function Phase2Viewer({ datasetSummary, featureImportances, classificationReport }) {
   const { theme } = useTheme();
+  usePageTitle('Model Training');
 
   const features = featureImportances || [
     { feature: 'Deep_Imbalance_Ratio', importance: 0.4617 },

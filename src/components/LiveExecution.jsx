@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
+import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function LiveExecution() {
   const { theme, mode } = useTheme();
+  
+  usePageTitle('Live Trading');
   
   const [deployMode, setDeployMode] = useState('paper'); // 'paper' or 'live'
   const [isRunning, setIsRunning] = useState(false);
@@ -82,7 +85,7 @@ export default function LiveExecution() {
           
           <button 
             onClick={isRunning ? stopDeployment : startDeployment}
-            className={`ncurses-btn text-sm font-bold px-6 py-2 ${isRunning ? 'bg-red-900 text-red-100 hover:bg-red-800' : theme.btnClass}`}
+            className={`ncurses-btn text-sm font-bold px-6 py-2 ${isRunning ? theme.btnActive : theme.btnClass}`}
           >
             {isRunning ? '[ HALT TRADING & FLATTEN ]' : '[ DEPLOY TO MARKET ]'}
           </button>
@@ -92,7 +95,7 @@ export default function LiveExecution() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className={`border border-dashed ${theme.borderMuted} p-3 text-center`}>
             <div className={`text-[10px] ${theme.textMuted} mb-1`}>REALIZED PnL</div>
-            <div className={`text-lg font-bold ${pnl >= 0 ? (mode === 'light' ? 'text-green-600' : 'text-green-400') : 'text-red-500'}`}>
+            <div className={`text-lg font-bold ${pnl >= 0 ? theme.text : theme.textMuted}`}>
               ${pnl.toFixed(2)}
             </div>
           </div>
@@ -112,7 +115,7 @@ export default function LiveExecution() {
         <div className={`border border-solid ${theme.borderMuted} ${theme.boxBg} p-3 text-xs font-mono space-y-1 h-64 overflow-y-auto flex flex-col justify-end`}>
           {logs.length === 0 && <span className={theme.textMuted}>System idle. Configure mode and deploy.</span>}
           {logs.map((log, idx) => (
-            <div key={idx} className={log.includes("EXEC") ? `font-bold ${theme.text}` : log.includes("HALT") ? 'text-red-500 font-bold' : theme.textMuted}>
+            <div key={idx} className={log.includes("EXEC") ? `font-bold ${theme.text}` : log.includes("HALT") ? `font-bold ${theme.text}` : theme.textMuted}>
               {log}
             </div>
           ))}
