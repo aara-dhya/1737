@@ -101,7 +101,7 @@ export default function App() {
           {/* Mode Toggle Button */}
           <button
             onClick={toggleMode}
-            className={`ncurses-btn text-xs font-bold ml-auto ${theme.btnActive} animate-pulse`}
+            className={`ncurses-btn text-xs font-bold ml-auto ${theme.btnActive}`}
             title="Click to toggle Light/Dark Mode"
           >
             [ 🌗 F6: MODE ({mode.toUpperCase()}) ]

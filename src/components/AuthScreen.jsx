@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext';
 import { usePageTitle } from '../hooks/usePageTitle';
 
 export default function AuthScreen({ onLogin }) {
-  const { theme, mode } = useTheme();
+  const { theme, mode, toggleMode } = useTheme();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -28,9 +28,23 @@ export default function AuthScreen({ onLogin }) {
   };
 
   return (
-    <div className={`h-full w-full flex flex-col items-center justify-center p-4`}>
-      <div className="w-full max-w-md">
-        <NcursesFrame title="SYSTEM AUTHENTICATION" headerExtra="[ SECURE CONNECTION ]">
+    <div className={`h-screen w-screen ${theme.bg} ${theme.text} font-mono flex flex-col overflow-hidden p-2 select-none border-2 ${theme.border}`}>
+      
+      {/* Top Bar for Mode Toggle */}
+      <div className="flex justify-end p-2 w-full shrink-0">
+        <button
+          onClick={toggleMode}
+          className={`ncurses-btn text-xs font-bold ${theme.btnActive}`}
+          title="Click to toggle Light/Dark Mode"
+        >
+          [ 🌗 F6: MODE ({mode.toUpperCase()}) ]
+        </button>
+      </div>
+
+      {/* Main Login Area */}
+      <div className={`flex-1 flex items-center justify-center p-4`}>
+        <div className="w-full max-w-md">
+          <NcursesFrame title="SYSTEM AUTHENTICATION" headerExtra="[ SECURE CONNECTION ]">
           <form onSubmit={handleSubmit} className="p-4 space-y-6">
             <div className="text-center space-y-2 mb-6">
               <div className={`text-lg font-bold ${theme.text}`}>INSTITUTIONAL QUANT TERMINAL</div>
@@ -82,6 +96,7 @@ export default function AuthScreen({ onLogin }) {
           </form>
         </NcursesFrame>
       </div>
+    </div>
     </div>
   );
 }
