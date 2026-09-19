@@ -15,12 +15,33 @@ export default function ConfigDashboard({ onRunPipeline }) {
 
   usePageTitle('Setup');
 
-  const handleRun = () => {
+  const handleRun = async () => {
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+      const response = await fetch(`${backendUrl}/api/pipeline/run`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ticker: ticker,
+          date_range: dateRange,
+          max_depth: parseInt(maxDepth) || 10,
+          n_estimators: parseInt(estimators) || 50
+        })
+      });
+      
+      if (!response.ok) {
+        throw new Error('Pipeline execution failed on server.');
+      }
+      
+      const data = await response.json();
+      onRunPipeline(data, ticker);
+    } catch (err) {
+      console.error(err);
+      alert("Backend connection failed. Ensure FastAPI is running on port 8000.");
+    } finally {
       setLoading(false);
-      onRunPipeline();
-    }, 1200);
+    }
   };
 
   return (

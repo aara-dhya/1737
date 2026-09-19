@@ -10,11 +10,10 @@ import LiveExecution from './components/LiveExecution';
 import TerminalConsole from './components/TerminalConsole';
 import { useTheme } from './context/ThemeContext';
 
-import initialData from '../data/pipeline_results.json';
-
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [pipelineData, setPipelineData] = useState(null); // Null until pipeline runs
+  const [activeTicker, setActiveTicker] = useState('LOBSTER:AAPL');
   const { mode, isDark, toggleMode, theme } = useTheme();
   
   const navigate = useNavigate();
@@ -132,7 +131,11 @@ export default function App() {
       
       <Route path="/home/setup" element={
         <MainLayout>
-          <ConfigDashboard onRunPipeline={() => { setPipelineData(initialData); navigate('/home/data'); }} />
+          <ConfigDashboard onRunPipeline={(data, ticker) => { 
+            setPipelineData(data); 
+            if (ticker) setActiveTicker(ticker);
+            navigate('/home/data'); 
+          }} />
         </MainLayout>
       } />
       
@@ -156,13 +159,13 @@ export default function App() {
       
       <Route path="/home/live" element={
         <MainLayout>
-          {pipelineData ? <LiveExecution /> : <Navigate to="/home/setup" replace />}
+          {pipelineData ? <LiveExecution ticker={activeTicker} /> : <Navigate to="/home/setup" replace />}
         </MainLayout>
       } />
       
       <Route path="/home/terminal" element={
         <MainLayout>
-          <TerminalConsole onRunPipeline={() => setPipelineData(initialData)} />
+          <TerminalConsole onRunPipeline={() => setPipelineData(null)} />
         </MainLayout>
       } />
     </Routes>

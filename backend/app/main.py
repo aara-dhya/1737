@@ -3,11 +3,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.app.config import settings
-from backend.app.database import engine, Base
-from backend.app.routers import auth_router, pipeline_router
-
-# Create database tables
-Base.metadata.create_all(bind=engine)
+from backend.app.routers import pipeline
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -25,8 +21,7 @@ app.add_middleware(
 )
 
 # Include Routers
-app.include_router(auth_router.router, prefix=settings.API_V1_STR)
-app.include_router(pipeline_router.router, prefix=settings.API_V1_STR)
+app.include_router(pipeline.router)
 
 @app.get("/")
 @app.get("/health")

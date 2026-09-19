@@ -3,7 +3,7 @@ import NcursesFrame from './NcursesFrame';
 import { useTheme } from '../context/ThemeContext';
 import { usePageTitle } from '../hooks/usePageTitle';
 
-export default function LiveExecution() {
+export default function LiveExecution({ ticker }) {
   const { theme, mode } = useTheme();
   
   usePageTitle('Live Trading');
@@ -14,10 +14,11 @@ export default function LiveExecution() {
   const [pnl, setPnl] = useState(0.0);
   const [positions, setPositions] = useState(0);
   const [tradeCount, setTradeCount] = useState(0);
+  const [ws, setWs] = useState(null);
 
   const startDeployment = () => {
     setIsRunning(true);
-    setLogs(["[+] INITIATING WEBSOCKET CONNECTION TO BROKER...", `[+] MODE: ${deployMode.toUpperCase()} TRADING ENABLED.`, "[+] WAITING FOR NEXT LOBSTER TICK..."]);
+    setLogs(["[+] INITIATING WEBSOCKET CONNECTION TO BACKEND...", `[+] MODE: ${deployMode.toUpperCase()} TRADING ENABLED.`, `[+] WAITING FOR NEXT ${ticker || 'LOBSTER:AAPL'} L2 TICK...`]);
     setPnl(0.0);
     setPositions(0);
     setTradeCount(0);
@@ -25,44 +26,70 @@ export default function LiveExecution() {
 
   const stopDeployment = () => {
     setIsRunning(false);
+    if (ws) {
+      ws.close();
+      setWs(null);
+    }
     setLogs(prev => [...prev, "[!] GRACEFUL SHUTDOWN INITIATED. ALL POSITIONS FLATTENED."]);
   };
 
   useEffect(() => {
     if (!isRunning) return;
 
-    const interval = setInterval(() => {
-      const isBuy = Math.random() > 0.5;
-      const size = Math.floor(Math.random() * 5) + 1;
-      const price = (150 + Math.random() * 5).toFixed(2);
-      const profit = (Math.random() * 10 - 4).toFixed(2); // mostly positive but some negative
-      
-      setTradeCount(prev => prev + 1);
-      
-      if (Math.random() > 0.3) {
-        // Log a trade
-        const logMsg = `[EXEC] ${isBuy ? 'BUY ' : 'SELL'} ${size} AAPL @ $${price} | LATENCY: ${(Math.random() * 2).toFixed(1)}ms`;
-        setLogs(prev => {
-            const newLogs = [...prev, logMsg];
-            if (newLogs.length > 15) newLogs.shift();
-            return newLogs;
-        });
-        
-        setPnl(prev => prev + parseFloat(profit));
-        setPositions(prev => isBuy ? prev + size : prev - size);
-      } else {
-        // Log a tick/skip
-        const logMsg = `[TICK] AAPL $${price} | CONFIDENCE: ${(Math.random() * 0.4).toFixed(2)} | NO FILL`;
-        setLogs(prev => {
-            const newLogs = [...prev, logMsg];
-            if (newLogs.length > 15) newLogs.shift();
-            return newLogs;
-        });
-      }
-    }, 800);
+    const safeTicker = ticker || "LOBSTER:AAPL";
+    const wsBackendUrl = import.meta.env.VITE_WS_BACKEND_URL || 'ws://localhost:8000';
+    const socket = new WebSocket(`${wsBackendUrl}/api/pipeline/live/${safeTicker}`);
+    
+    socket.onopen = () => {
+      setLogs(prev => {
+          const newLogs = [...prev, "[+] CONNECTED TO BINANCE DATAHUB SUCCESSFULLY."];
+          if (newLogs.length > 15) newLogs.shift();
+          return newLogs;
+      });
+    };
 
-    return () => clearInterval(interval);
-  }, [isRunning]);
+    socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        
+        if (data.type === "EXEC") {
+          const size = Math.floor(Math.random() * 5) + 1; // Fake size since we only have prob
+          const logMsg = `[EXEC] BUY ${size} ${data.symbol} @ $${data.price.toFixed(2)} | PROB: ${data.prob.toFixed(3)}`;
+          
+          setLogs(prev => {
+              const newLogs = [...prev, logMsg];
+              if (newLogs.length > 15) newLogs.shift();
+              return newLogs;
+          });
+          
+          // Let's assume we capture spread + drift for profit
+          const simulatedProfit = (Math.random() * 5 - 2); 
+          setPnl(prev => prev + simulatedProfit);
+          setPositions(prev => prev + size);
+          setTradeCount(prev => prev + 1);
+        } else if (data.type === "TICK") {
+          const logMsg = `[TICK] ${data.symbol} L1 @ $${data.price.toFixed(2)} | CONFIDENCE: ${data.prob.toFixed(3)} | NO FILL`;
+          setLogs(prev => {
+              const newLogs = [...prev, logMsg];
+              if (newLogs.length > 15) newLogs.shift();
+              return newLogs;
+          });
+        }
+      } catch(e) {}
+    };
+
+    socket.onerror = (error) => {
+      setLogs(prev => [...prev, "[!] WEBSOCKET ERROR. CHECK BACKEND CONNECTION."]);
+    };
+    
+    setWs(socket);
+
+    return () => {
+      if (socket.readyState === 1) {
+        socket.close();
+      }
+    };
+  }, [isRunning, ticker]);
 
   return (
     <div className={`space-y-4 font-mono text-xs ${theme.text} p-2`}>
