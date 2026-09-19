@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 
+import AuthScreen from './components/AuthScreen';
+import ConfigDashboard from './components/ConfigDashboard';
 import Phase1Viewer from './components/Phase1Viewer';
 import Phase2Viewer from './components/Phase2Viewer';
 import Phase3Backtester from './components/Phase3Backtester';
+import LiveExecution from './components/LiveExecution';
 import TerminalConsole from './components/TerminalConsole';
 import { useTheme } from './context/ThemeContext';
 
 import initialData from '../data/pipeline_results.json';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('phase1');
-  const [pipelineData, setPipelineData] = useState(initialData);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [activeTab, setActiveTab] = useState('config');
+  const [pipelineData, setPipelineData] = useState(null); // Null until pipeline runs
   const { mode, isDark, toggleMode, theme } = useTheme();
+
+  if (!isAuthenticated) {
+    return <AuthScreen onLogin={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className={`h-screen w-screen ${theme.bg} ${theme.text} font-mono flex flex-col overflow-hidden p-2 select-none border-2 ${theme.border}`}>
@@ -25,46 +33,56 @@ export default function App() {
         <div className="flex items-center space-x-3 text-[11px] font-bold">
           <span>ENGINE: [ POLARS ]</span>
           <span>TAKER FRICTION: [ $0.004 ]</span>
-          <span>NET PnL: [ +${pipelineData?.backtest_metrics?.sniper?.net_profit ? pipelineData.backtest_metrics.sniper.net_profit.toFixed(2) : '3,237.34'} ]</span>
+          <span>NET PnL: [ {pipelineData?.backtest_metrics?.sniper?.net_profit ? `+$${pipelineData.backtest_metrics.sniper.net_profit.toFixed(2)}` : 'N/A'} ]</span>
         </div>
       </header>
 
-      {/* Function Keys Navigation Bar ([F1: DATA], [F2: MODEL], [F3: BACKTEST], [F4: LOGS], [F5: TOGGLE MODE]) */}
+      {/* Function Keys Navigation Bar */}
       <nav className={`${theme.bg} border-b ${theme.border} py-1.5 px-2 flex space-x-2 shrink-0 overflow-x-auto`}>
         <button
-          onClick={() => setActiveTab('phase1')}
-          className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase1' ? theme.btnActive : theme.text
-          }`}
+          onClick={() => setActiveTab('config')}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'config' ? theme.btnActive : theme.text}`}
         >
-          [ F1: DATA / FEATURE ENG ]
+          [ F0: SETUP ]
+        </button>
+        
+        <button
+          onClick={() => setActiveTab('phase1')}
+          disabled={!pipelineData}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'phase1' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+        >
+          [ F1: DATA ]
         </button>
 
         <button
           onClick={() => setActiveTab('phase2')}
-          className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase2' ? theme.btnActive : theme.text
-          }`}
+          disabled={!pipelineData}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'phase2' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
         >
-          [ F2: MODEL TRAIN / DELTAS ]
+          [ F2: MODEL ]
         </button>
 
         <button
           onClick={() => setActiveTab('phase3')}
-          className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'phase3' ? theme.btnActive : theme.text
-          }`}
+          disabled={!pipelineData}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'phase3' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
         >
-          [ F3: BACKTEST & SNIPER ]
+          [ F3: BACKTEST ]
+        </button>
+        
+        <button
+          onClick={() => setActiveTab('live')}
+          disabled={!pipelineData}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'live' ? theme.btnActive : theme.text} ${!pipelineData ? 'opacity-50' : ''}`}
+        >
+          [ F4: LIVE TRADING ]
         </button>
 
         <button
           onClick={() => setActiveTab('terminal')}
-          className={`ncurses-btn text-xs font-bold ${
-            activeTab === 'terminal' ? theme.btnActive : theme.text
-          }`}
+          className={`ncurses-btn text-xs font-bold ${activeTab === 'terminal' ? theme.btnActive : theme.text}`}
         >
-          [ F4: LIVE TERMINAL ]
+          [ F5: TERMINAL ]
         </button>
 
         {/* Mode Toggle Button */}
@@ -73,17 +91,26 @@ export default function App() {
           className={`ncurses-btn text-xs font-bold ml-auto ${theme.btnActive} animate-pulse`}
           title="Click to toggle Light/Dark Mode"
         >
-          [ 🌗 F5: TOGGLE MODE ({mode.toUpperCase()}) ]
+          [ 🌗 F6: MODE ({mode.toUpperCase()}) ]
         </button>
       </nav>
 
       {/* Main Viewport Content Area */}
       <main className={`flex-1 overflow-auto p-2 ${theme.bg}`}>
-        {activeTab === 'phase1' && (
+        {activeTab === 'config' && (
+          <ConfigDashboard 
+            onRunPipeline={() => {
+              setPipelineData(initialData);
+              setActiveTab('phase1');
+            }} 
+          />
+        )}
+
+        {activeTab === 'phase1' && pipelineData && (
           <Phase1Viewer datasetSummary={pipelineData?.dataset_summary} />
         )}
 
-        {activeTab === 'phase2' && (
+        {activeTab === 'phase2' && pipelineData && (
           <Phase2Viewer 
             datasetSummary={pipelineData?.dataset_summary}
             featureImportances={pipelineData?.feature_importances}
@@ -91,12 +118,16 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'phase3' && (
+        {activeTab === 'phase3' && pipelineData && (
           <Phase3Backtester 
             backtestMetrics={pipelineData?.backtest_metrics}
             pnlSeries={pipelineData?.pnl_series}
             tradeLogs={pipelineData?.trade_logs}
           />
+        )}
+        
+        {activeTab === 'live' && pipelineData && (
+          <LiveExecution />
         )}
 
         {activeTab === 'terminal' && (
@@ -107,7 +138,7 @@ export default function App() {
       {/* Bottom ncurses Status Bar */}
       <footer className={`${theme.headerBg} ${theme.headerText} px-2 py-0.5 font-bold flex justify-between items-center text-[11px] uppercase shrink-0`}>
         <div>
-          &lt;F1&gt; DATA &bull; &lt;F2&gt; MODEL &bull; &lt;F3&gt; BACKTEST &bull; &lt;F4&gt; SHELL &bull; &lt;F5&gt; MODE ({mode.toUpperCase()}) &bull; &lt;F10&gt; QUIT
+          &lt;F0&gt; SETUP &bull; &lt;F1&gt; DATA &bull; &lt;F2&gt; MODEL &bull; &lt;F3&gt; BACKTEST &bull; &lt;F4&gt; LIVE &bull; &lt;F5&gt; SHELL &bull; &lt;F6&gt; MODE
         </div>
         <div className="font-mono text-[10px]">
           [ TUI MODE: {mode.toUpperCase()} ]
