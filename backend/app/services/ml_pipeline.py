@@ -94,6 +94,7 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
     # 6. Construct JSON Response
     return {
         "dataset_summary": {
+            "symbol": symbol,
             "total_rows": len(df),
             "start_time": "09:30:00",
             "end_time": "16:00:00",
@@ -105,6 +106,7 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
         "feature_importances": feature_importances,
         "classification_report": report,
         "backtest_metrics": {
+            "friction_per_trade": 0.004,
             "baseline": {
                 "total_trades": trades_sniper + 100,
                 "gross_profit": net_profit_sniper + (trades_sniper + 100) * 0.004,
