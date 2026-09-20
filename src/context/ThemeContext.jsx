@@ -3,11 +3,17 @@ import React, { createContext, useContext, useState } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // Mode can be 'light' or 'dark'
-  const [mode, setMode] = useState('light');
+  // Mode can be 'light' or 'dark', loaded from localStorage if available
+  const [mode, setMode] = useState(() => {
+    return localStorage.getItem('quantshell_theme') || 'light';
+  });
 
   const toggleMode = () => {
-    setMode(prev => (prev === 'light' ? 'dark' : 'light'));
+    setMode(prev => {
+      const newMode = prev === 'light' ? 'dark' : 'light';
+      localStorage.setItem('quantshell_theme', newMode);
+      return newMode;
+    });
   };
 
   const isDark = mode === 'dark';

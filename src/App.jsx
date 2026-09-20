@@ -100,10 +100,22 @@ export default function App() {
           {/* Mode Toggle Button */}
           <button
             onClick={toggleMode}
-            className={`ncurses-btn text-xs font-bold ml-auto ${theme.btnActive}`}
+            className={`ncurses-btn text-xs font-bold ml-auto mr-2 ${theme.btnActive}`}
             title="Click to toggle Light/Dark Mode"
           >
             [ 🌗 F6: MODE ({mode.toUpperCase()}) ]
+          </button>
+
+          {/* Logout Button */}
+          <button
+            onClick={() => {
+              setIsAuthenticated(false);
+              setPipelineData(null);
+            }}
+            className={`ncurses-btn text-xs font-bold ${theme.btnActive}`}
+            title="Click to logout"
+          >
+            [ ⏻ F7: LOGOUT ]
           </button>
         </nav>
 
