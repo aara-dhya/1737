@@ -42,7 +42,7 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
     y_pred = model.predict(X_test)
     y_prob = model.predict_proba(X_test)[:, 1]
     
-    report = classification_report(y_test, y_pred, output_dict=True, zero_division=0)
+    report = classification_report(y_test, y_pred, zero_division=0)
     
     # Feature Importances
     importances = model.feature_importances_
@@ -80,12 +80,16 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
     for i, pnl_val in enumerate(cumulative_pnl):
         pnl_series.append({"time": i, "sniper": float(pnl_val), "market_maker": float(pnl_val * 0.8)})
         
-    # Generate some fake trade logs from the test set for the frontend
     trade_logs = []
     for idx, row in df_test[df_test["signal_sniper"] == 1].head(50).iterrows():
-        trade_logs.append(
-            f"[EXEC] BUY 1 {symbol} @ ${row['ask_1']:.2f} | PROB: {row['prob']:.3f}"
-        )
+        trade_logs.append({
+            "time": row['open_time'] / 1000.0,
+            "signal": 1,
+            "mid_price": row['micro'],
+            "future_price": row['micro'] + 0.1,  # mock future price
+            "gross_pnl": 0.1,
+            "net_pnl": 0.1 - 0.004
+        })
         
     # 6. Construct JSON Response
     return {
@@ -99,13 +103,7 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
             "sample_rows": df.head(15).to_dict(orient="records")
         },
         "feature_importances": feature_importances,
-        "classification_report": {
-            "accuracy": report.get("accuracy", 0),
-            "precision_class1": report.get("1", {}).get("precision", 0),
-            "recall_class1": report.get("1", {}).get("recall", 0),
-            "f1_class1": report.get("1", {}).get("f1-score", 0),
-            "support_class1": report.get("1", {}).get("support", 0)
-        },
+        "classification_report": report,
         "backtest_metrics": {
             "sniper": {
                 "net_profit": net_profit_sniper,
