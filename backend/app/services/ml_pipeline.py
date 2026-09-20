@@ -119,7 +119,8 @@ async def run_pipeline(symbol: str, max_depth: int, n_estimators: int):
                 "sharpe_ratio": sharpe,
                 "max_drawdown": -4.2,
                 "win_rate": float(win_rate)
-            },
+            }
+        },
         "pnl_series": pnl_series,
         "trade_logs": trade_logs
     }
